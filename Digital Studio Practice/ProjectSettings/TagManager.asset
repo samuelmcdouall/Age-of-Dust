@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CinematicCameraView
+  - ClearingCamera
+  - Ground
+  - Clearing
+  - Desert
+  - Cave
+  - CaveCamera
   layers:
   - Default
   - TransparentFX
