@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Clearing : MonoBehaviour
+public class CinematicArea : MonoBehaviour
 {
     public GameObject cinematic_camera;
+    [SerializeField]
+    string camera_tag;
     private void OnCollisionEnter(Collision collision)
     {
         if (!cinematic_camera.GetComponent<Camera>().enabled)
@@ -13,7 +15,7 @@ public class Clearing : MonoBehaviour
             {
                 Player.last_camera_tr = Camera.main.transform;
                 CameraManager.DisableAllEnabledCameras();
-                CameraManager.EnableCamera("ClearingCamera");
+                CameraManager.EnableCamera(camera_tag);
             }
         }
     }
