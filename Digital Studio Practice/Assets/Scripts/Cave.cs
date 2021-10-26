@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Cave : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject cinematic_camera;
     private void OnCollisionEnter(Collision collision)
     {
