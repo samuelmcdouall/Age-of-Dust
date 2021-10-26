@@ -22,6 +22,6 @@ public class RotationCamera : MonoBehaviour
         mouse_x += Input.GetAxis("Mouse X") * rotation_speed;
         mouse_y -= Input.GetAxis("Mouse Y") * rotation_speed;
         mouse_y = Mathf.Clamp(mouse_y, mouse_y_min_clamp, mouse_y_max_clamp);
-        camera_target_to_rotate_around.rotation = Quaternion.Euler(mouse_y, mouse_x, 0);
+        camera_target_to_rotate_around.rotation = Quaternion.Euler(mouse_y, mouse_x, 0.0f);
     }
 }
