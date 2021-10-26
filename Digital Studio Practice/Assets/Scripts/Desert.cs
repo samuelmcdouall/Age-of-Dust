@@ -11,9 +11,20 @@ public class Desert : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
+                //CameraManager.transition_back_to_player = true;
                 CameraManager.DisableAllEnabledCameras();
                 CameraManager.EnableCamera("MainCamera");
             }
         }
     }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (!main_camera.GetComponent<Camera>().enabled)
+    //    {
+    //        if (collision.gameObject.tag == "Player")
+    //        {
+    //            CameraManager.transition_back_to_player = false;
+    //        }
+    //    }
+    //}
 }

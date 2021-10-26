@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    //public static bool transition_back_to_player = false;
     public static void DisableAllEnabledCameras()
     {
         Camera[] enabled_cameras = Camera.allCameras;
