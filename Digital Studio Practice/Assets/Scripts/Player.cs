@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody player_rb;
+    Animator player_ani;
 
     [SerializeField]
     private float player_speed;
@@ -19,10 +20,16 @@ public class Player : MonoBehaviour
     public static Transform last_camera_tr;
     Vector3 starting_position;
 
+    // Animations
+    string running_animation = "running";
+    string jump_up_animation = "jump_up";
+    string falling_down_animation = "falling_down";
+
     // Start is called before the first frame update
     void Start()
     {
         player_rb = GetComponent<Rigidbody>();
+        player_ani = GetComponent<Animator>();
         camera_tr = Camera.main.transform;
         Cursor.visible = show_cursor;
         starting_position = transform.position;
@@ -33,6 +40,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GroundCheck.is_grounded)
+        {
+            player_ani.SetBool(falling_down_animation, false);
+        }
+        else if (player_rb.velocity.y > 0.1f)
+        {
+            player_ani.SetTrigger(jump_up_animation);
+        }
+        else if (player_rb.velocity.y < -0.1f)
+        {
+            player_ani.SetBool(falling_down_animation, true);
+        }
         if (transform.position.y <= -10.0f)
         {
             transform.position = starting_position;
@@ -77,6 +96,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                player_ani.SetBool(running_animation, false);
                 player_rb.velocity = new Vector3(0.0f, player_rb.velocity.y, 0.0f);
             }
         }
@@ -122,6 +142,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                player_ani.SetBool(running_animation, false);
                 player_rb.velocity = new Vector3(0.0f, player_rb.velocity.y, 0.0f);
             }
         }
@@ -146,6 +167,7 @@ public class Player : MonoBehaviour
 
     public void DetermineYIndependentVelocity(Vector3 horizontal_direction)
     {
+        player_ani.SetBool(running_animation, true);
         horizontal_direction = new Vector3(horizontal_direction.x, 0.0f, horizontal_direction.z);
         horizontal_direction = horizontal_direction.normalized * player_speed;
         player_rb.velocity = new Vector3(horizontal_direction.x, player_rb.velocity.y, horizontal_direction.z);
