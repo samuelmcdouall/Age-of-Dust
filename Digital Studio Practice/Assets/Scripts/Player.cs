@@ -8,11 +8,15 @@ public class Player : MonoBehaviour
     Animator player_ani;
 
     [SerializeField]
-    private float player_speed;
+    private float player_move_force;
     [SerializeField]
-    private float player_jump_speed;
+    private float player_top_speed;
     [SerializeField]
-    private bool enable_double_jump;
+    private float player_jump_force;
+    [SerializeField]
+    private float player_fall_force;
+    [SerializeField]
+    private bool double_jump_enabled;
     bool jumped_twice;
     [SerializeField] 
     private bool show_cursor;
@@ -40,6 +44,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player_rb.velocity.magnitude > player_top_speed)
+        {
+            float original_vertical_speed = player_rb.velocity.y;
+            player_rb.velocity = player_rb.velocity.normalized * player_top_speed;
+            player_rb.velocity = new Vector3(player_rb.velocity.x, original_vertical_speed, player_rb.velocity.z);
+        }
         if (GroundCheck.is_grounded)
         {
             player_ani.SetBool(falling_down_animation, false);
@@ -51,6 +61,7 @@ public class Player : MonoBehaviour
         else if (player_rb.velocity.y < -0.1f)
         {
             player_ani.SetBool(falling_down_animation, true);
+            player_rb.AddForce(0.0f, -player_fall_force, 0.0f);
         }
         if (transform.position.y <= -10.0f)
         {
@@ -97,7 +108,7 @@ public class Player : MonoBehaviour
             else
             {
                 player_ani.SetBool(running_animation, false);
-                player_rb.velocity = new Vector3(0.0f, player_rb.velocity.y, 0.0f);
+                //player_rb.velocity = new Vector3(0.0f, player_rb.velocity.y, 0.0f);
             }
         }
         else
@@ -143,11 +154,11 @@ public class Player : MonoBehaviour
             else
             {
                 player_ani.SetBool(running_animation, false);
-                player_rb.velocity = new Vector3(0.0f, player_rb.velocity.y, 0.0f);
+                //player_rb.velocity = new Vector3(0.0f, player_rb.velocity.y, 0.0f);
             }
         }
 
-        if (GroundCheck.is_grounded && enable_double_jump)
+        if (GroundCheck.is_grounded && double_jump_enabled)
         {
             jumped_twice = false;
         }
@@ -155,11 +166,13 @@ public class Player : MonoBehaviour
         {
             if (GroundCheck.is_grounded)
             {
-                player_rb.velocity = new Vector3(player_rb.velocity.x, player_jump_speed, player_rb.velocity.z);
+                player_rb.AddForce(0.0f, player_jump_force, 0.0f, ForceMode.Impulse);
+                //player_rb.velocity = new Vector3(player_rb.velocity.x, player_jump_force, player_rb.velocity.z);
             }
-            else if (!jumped_twice && enable_double_jump)
+            else if (!jumped_twice && double_jump_enabled)
             {
-                player_rb.velocity = new Vector3(player_rb.velocity.x, player_jump_speed, player_rb.velocity.z);
+                player_rb.AddForce(0.0f, player_jump_force, 0.0f, ForceMode.Impulse);
+                //player_rb.velocity = new Vector3(player_rb.velocity.x, player_jump_force, player_rb.velocity.z);
                 jumped_twice = true;
             }
         }
@@ -169,8 +182,9 @@ public class Player : MonoBehaviour
     {
         player_ani.SetBool(running_animation, true);
         horizontal_direction = new Vector3(horizontal_direction.x, 0.0f, horizontal_direction.z);
-        horizontal_direction = horizontal_direction.normalized * player_speed;
-        player_rb.velocity = new Vector3(horizontal_direction.x, player_rb.velocity.y, horizontal_direction.z);
+        horizontal_direction = horizontal_direction.normalized * player_move_force;
+        player_rb.AddForce(horizontal_direction);
+        //player_rb.velocity = new Vector3(horizontal_direction.x, player_rb.velocity.y, horizontal_direction.z);
     }
 
 }
