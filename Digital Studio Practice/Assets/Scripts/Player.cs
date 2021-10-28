@@ -8,6 +8,11 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float player_speed;
+    [SerializeField]
+    private float player_jump_speed;
+    [SerializeField]
+    private bool enable_double_jump;
+    bool jumped_twice;
     [SerializeField] 
     private bool show_cursor;
     Transform camera_tr;
@@ -21,6 +26,7 @@ public class Player : MonoBehaviour
         camera_tr = Camera.main.transform;
         Cursor.visible = show_cursor;
         starting_position = transform.position;
+        jumped_twice = false;
 
     }
 
@@ -117,6 +123,23 @@ public class Player : MonoBehaviour
             else
             {
                 player_rb.velocity = new Vector3(0.0f, player_rb.velocity.y, 0.0f);
+            }
+        }
+
+        if (GroundCheck.is_grounded && enable_double_jump)
+        {
+            jumped_twice = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (GroundCheck.is_grounded)
+            {
+                player_rb.velocity = new Vector3(player_rb.velocity.x, player_jump_speed, player_rb.velocity.z);
+            }
+            else if (!jumped_twice && enable_double_jump)
+            {
+                player_rb.velocity = new Vector3(player_rb.velocity.x, player_jump_speed, player_rb.velocity.z);
+                jumped_twice = true;
             }
         }
     }
