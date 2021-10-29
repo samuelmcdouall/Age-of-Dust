@@ -15,11 +15,9 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    public static void EnableCamera(string camera_tag)
+    public static void EnableCamera(GameObject camera_object)
     {
-        GameObject new_camera = GameObject.FindGameObjectWithTag(camera_tag);
-
-        new_camera.GetComponent<Camera>().enabled = true;
+        camera_object.GetComponent<Camera>().enabled = true;
         //new_camera.GetComponent<AudioListener>().enabled = true;
     }
 }
