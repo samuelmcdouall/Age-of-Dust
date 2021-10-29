@@ -187,4 +187,20 @@ public class Player : MonoBehaviour
         //player_rb.velocity = new Vector3(horizontal_direction.x, player_rb.velocity.y, horizontal_direction.z);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        // TODO running into side of platform when in motion causes issues
+        if (collision.gameObject.tag == "MovingPlatform" && transform.position.y > collision.gameObject.transform.position.y)
+        {
+            transform.SetParent(collision.gameObject.transform.parent);
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "MovingPlatform")
+        {
+            transform.SetParent(null);
+        }
+    }
+
 }
