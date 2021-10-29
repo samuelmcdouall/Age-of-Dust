@@ -13,10 +13,6 @@ public class RotationCamera : MonoBehaviour
     float mouse_y_min_clamp = -35.0f;
     [SerializeField]
     float mouse_y_max_clamp = 60.0f;
-    void Start()
-    {
-
-    }
     void Update()
     {
         mouse_x += Input.GetAxis("Mouse X") * rotation_speed;
