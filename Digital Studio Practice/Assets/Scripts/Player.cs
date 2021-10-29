@@ -108,13 +108,10 @@ public class Player : MonoBehaviour
             else
             {
                 player_ani.SetBool(running_animation, false);
-                //player_rb.velocity = new Vector3(0.0f, player_rb.velocity.y, 0.0f);
             }
         }
         else
         {
-            //Camera[] enabled_camera = Camera.allCameras;
-            //Transform current_camera_transform = enabled_camera[0].transform.parent.gameObject.transform;
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
             {
                 DetermineYIndependentVelocity(last_camera_tr.forward - last_camera_tr.right);
@@ -154,7 +151,6 @@ public class Player : MonoBehaviour
             else
             {
                 player_ani.SetBool(running_animation, false);
-                //player_rb.velocity = new Vector3(0.0f, player_rb.velocity.y, 0.0f);
             }
         }
 
@@ -167,12 +163,10 @@ public class Player : MonoBehaviour
             if (GroundCheck.is_grounded)
             {
                 player_rb.AddForce(0.0f, player_jump_force, 0.0f, ForceMode.Impulse);
-                //player_rb.velocity = new Vector3(player_rb.velocity.x, player_jump_force, player_rb.velocity.z);
             }
             else if (!jumped_twice && double_jump_enabled)
             {
                 player_rb.AddForce(0.0f, player_jump_force, 0.0f, ForceMode.Impulse);
-                //player_rb.velocity = new Vector3(player_rb.velocity.x, player_jump_force, player_rb.velocity.z);
                 jumped_twice = true;
             }
         }
@@ -184,7 +178,6 @@ public class Player : MonoBehaviour
         horizontal_direction = new Vector3(horizontal_direction.x, 0.0f, horizontal_direction.z);
         horizontal_direction = horizontal_direction.normalized * player_move_force;
         player_rb.AddForce(horizontal_direction);
-        //player_rb.velocity = new Vector3(horizontal_direction.x, player_rb.velocity.y, horizontal_direction.z);
     }
 
     private void OnCollisionEnter(Collision collision)
