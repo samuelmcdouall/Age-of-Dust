@@ -185,7 +185,7 @@ public class Player : MonoBehaviour
         // TODO running into side of platform when in motion causes issues
         if (collision.gameObject.tag == "MovingPlatform" && transform.position.y > collision.gameObject.transform.position.y)
         {
-            transform.SetParent(collision.gameObject.transform.parent);
+            transform.SetParent(collision.gameObject.transform);
         }
     }
     private void OnCollisionExit(Collision collision)

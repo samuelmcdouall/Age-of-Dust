@@ -576,6 +576,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2082527266}
     m_Modifications:
     - target: {fileID: 1059930496358662, guid: f58dcf1faed060e48af3b1ad7c749ca9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059930496358662, guid: f58dcf1faed060e48af3b1ad7c749ca9, type: 3}
       propertyPath: m_TagString
       value: MovingPlatform
       objectReference: {fileID: 0}
@@ -586,6 +590,10 @@ PrefabInstance:
     - target: {fileID: 1375891493485384, guid: f58dcf1faed060e48af3b1ad7c749ca9, type: 3}
       propertyPath: m_TagString
       value: MovingPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996195779256686, guid: f58dcf1faed060e48af3b1ad7c749ca9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1996195779256686, guid: f58dcf1faed060e48af3b1ad7c749ca9, type: 3}
       propertyPath: m_TagString
@@ -682,7 +690,20 @@ MonoBehaviour:
   start_point: {fileID: 1165592680}
   end_point: {fileID: 1568820856}
   platform_speed: 3
-  stop_duration: 0.5
+  stop_duration: 1
+--- !u!65 &272060137
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272060135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.4, z: 3}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &283899162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,10 +1048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6a6df342b52d24092cf6bbb590c535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveHeight: 2
-  waveFrequency: 0.5
-  waveLength: 0.5
-  waveOriginPosition: {x: 0, y: 0, z: 0}
 --- !u!23 &455939013
 MeshRenderer:
   m_ObjectHideFlags: 0
