@@ -12,6 +12,7 @@ TagManager:
   - Cave
   - CaveCamera
   - MovingPlatform
+  - PlayerModel
   layers:
   - Default
   - TransparentFX

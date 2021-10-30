@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         player_rb = GetComponent<Rigidbody>();
-        player_ani = GetComponent<Animator>();
+        player_ani = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<Animator>();
         camera_tr = Camera.main.transform;
         Cursor.visible = show_cursor;
         starting_position = transform.position;
