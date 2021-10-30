@@ -53,13 +53,15 @@ public class Player : MonoBehaviour
         if (GroundCheck.is_grounded)
         {
             player_ani.SetBool(falling_down_animation, false);
+            player_ani.SetBool(jump_up_animation, false);
         }
         else if (player_rb.velocity.y > 0.1f)
         {
-            player_ani.SetTrigger(jump_up_animation);
+
         }
         else if (player_rb.velocity.y < -0.1f)
         {
+            player_ani.SetBool(jump_up_animation, false);
             player_ani.SetBool(falling_down_animation, true);
             player_rb.AddForce(0.0f, -player_fall_force, 0.0f);
         }
@@ -162,7 +164,8 @@ public class Player : MonoBehaviour
         {
             if (GroundCheck.is_grounded)
             {
-                player_rb.AddForce(0.0f, player_jump_force, 0.0f, ForceMode.Impulse);
+                player_ani.SetBool(jump_up_animation, true);
+                Invoke("JumpUp", 0.25f);
             }
             else if (!jumped_twice && double_jump_enabled)
             {
@@ -170,6 +173,11 @@ public class Player : MonoBehaviour
                 jumped_twice = true;
             }
         }
+    }
+
+    private void JumpUp()
+    {
+        player_rb.AddForce(0.0f, player_jump_force, 0.0f, ForceMode.Impulse);
     }
 
     public void DetermineYIndependentVelocity(Vector3 horizontal_direction)
