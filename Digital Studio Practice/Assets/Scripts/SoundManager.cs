@@ -19,7 +19,9 @@ public class SoundManager : MonoBehaviour
         if (!player_as.isPlaying)
         {
             // todo may need a delay here of no music playing for a bit
-            FadeInNewClip(main_game_music);
+            print("not playing");
+            StopAllCoroutines();
+            StartCoroutine(FadeInNewClip(main_game_music));
         }
     }
 
@@ -49,7 +51,7 @@ public class SoundManager : MonoBehaviour
         player_as.clip = cinematic_clip;
         player_as.volume = 0.0f;
         player_as.Play();
-        print(player_as.clip.name);
+        //Invoke("StopAudioSource", player_as.clip.length + 3.0f);
 
         float time_to_fade = 1.0f;
         float fade_timer = 0.0f;
@@ -60,6 +62,11 @@ public class SoundManager : MonoBehaviour
             fade_timer += Time.deltaTime;
             yield return null;
         }
+    }
+
+    private void StopAudioSource()
+    {
+        player_as.Stop();
     }
 
 }

@@ -5666,7 +5666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474370699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.5}
+  m_LocalPosition: {x: 0, y: 0, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1793366941}
@@ -5989,7 +5989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544269807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.5}
+  m_LocalPosition: {x: 0, y: 0, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1793366941}
@@ -7112,7 +7112,7 @@ MonoBehaviour:
   cinematic_camera: {fileID: 646049797}
   cinematic_area_point: {fileID: 1474370699}
   regular_area_point: {fileID: 1544269807}
-  cinematic_audioclip: {fileID: 8300000, guid: d4c2b2cc35dd29c4da03311e14ca63b4, type: 3}
+  cinematic_audioclip: {fileID: 8300000, guid: efda90709e10a6e49b669bf664c65911, type: 3}
 --- !u!65 &1793366943
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7124,7 +7124,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6, y: 4, z: 6}
+  m_Size: {x: 6, y: 4, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1812891122 stripped
 Transform:
