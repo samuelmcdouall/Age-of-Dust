@@ -10,7 +10,6 @@ public class CameraManager : MonoBehaviour
         
         foreach(Camera camera in enabled_cameras)
         {
-            //camera.transform.parent.gameObject.GetComponent<AudioListener>();
             camera.enabled = false;
         }
     }
@@ -18,6 +17,5 @@ public class CameraManager : MonoBehaviour
     public static void EnableCamera(GameObject camera_object)
     {
         camera_object.GetComponent<Camera>().enabled = true;
-        //new_camera.GetComponent<AudioListener>().enabled = true;
     }
 }

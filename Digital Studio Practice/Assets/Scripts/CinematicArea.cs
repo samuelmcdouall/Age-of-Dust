@@ -7,11 +7,16 @@ public class CinematicArea : MonoBehaviour
     public GameObject cinematic_camera;
     public GameObject cinematic_area_point;
     public GameObject regular_area_point;
+    public AudioClip cinematic_audioclip;
+    bool played_audioclip;
     GameObject player_camera;
+    SoundManager sound_manager_script;
 
     private void Start()
     {
         player_camera = GameObject.FindGameObjectWithTag("MainCamera");
+        sound_manager_script = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        played_audioclip = false;
     }
 
     private void OnTriggerExit(Collider collider)
@@ -30,6 +35,19 @@ public class CinematicArea : MonoBehaviour
                 Player.last_camera_tr = Camera.main.transform;
                 CameraManager.DisableAllEnabledCameras();
                 CameraManager.EnableCamera(cinematic_camera);
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            if (!played_audioclip)
+            {
+                print("go to sound manager and play new clip");
+                sound_manager_script.PlayNewClip(cinematic_audioclip);
+                played_audioclip = true;
             }
         }
     }
