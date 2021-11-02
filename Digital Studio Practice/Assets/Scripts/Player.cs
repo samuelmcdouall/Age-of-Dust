@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool double_jump_enabled;
     bool jumped_twice;
+    bool able_to_jump_off_ground;
+    float jump_delay_timer;
+    [SerializeField]
+    private float jump_delay;
     [SerializeField] 
     private bool show_cursor;
     Transform camera_tr;
@@ -38,6 +42,8 @@ public class Player : MonoBehaviour
         Cursor.visible = show_cursor;
         starting_position = transform.position;
         jumped_twice = false;
+        able_to_jump_off_ground = true;
+        jump_delay_timer = 0.0f;
 
     }
 
@@ -50,14 +56,24 @@ public class Player : MonoBehaviour
             player_rb.velocity = player_rb.velocity.normalized * player_top_speed;
             player_rb.velocity = new Vector3(player_rb.velocity.x, original_vertical_speed, player_rb.velocity.z);
         }
+        // able to jump only after 
         if (GroundCheck.is_grounded)
         {
             player_ani.SetBool(falling_down_animation, false);
             player_ani.SetBool(jump_up_animation, false);
+            if (!able_to_jump_off_ground && jump_delay_timer > jump_delay)
+            {
+                able_to_jump_off_ground = true;
+                jump_delay_timer = 0.0f;
+            }
+            else if (!able_to_jump_off_ground) 
+            {
+                jump_delay_timer += Time.deltaTime;
+            }
         }
         else if (player_rb.velocity.y > 0.1f)
         {
-
+            
         }
         else if (player_rb.velocity.y < -0.1f)
         {
@@ -156,16 +172,17 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (GroundCheck.is_grounded && double_jump_enabled)
+        if (able_to_jump_off_ground && double_jump_enabled)
         {
             jumped_twice = false;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (GroundCheck.is_grounded)
+            if (able_to_jump_off_ground)
             {
                 player_ani.SetBool(jump_up_animation, true);
                 Invoke("JumpUp", 0.25f);
+                able_to_jump_off_ground = false;
             }
             else if (!jumped_twice && double_jump_enabled)
             {

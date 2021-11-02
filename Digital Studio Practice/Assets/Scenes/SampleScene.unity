@@ -7316,7 +7316,8 @@ MonoBehaviour:
   player_top_speed: 8
   player_jump_force: 10
   player_fall_force: 5
-  double_jump_enabled: 1
+  double_jump_enabled: 0
+  jump_delay: 1
   show_cursor: 0
 --- !u!1 &1887327032
 GameObject:
