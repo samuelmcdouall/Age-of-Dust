@@ -4,31 +4,47 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioSource player_as;
+    [System.NonSerialized]
+    public AudioSource player_as;
     public AudioClip main_game_music;
+    [SerializeField]
+    float max_volume;
     // Start is called before the first frame update
     void Start()
     {
         player_as = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         player_as.clip = main_game_music;
+        player_as.volume = max_volume;
         player_as.Play();
     }
 
     private void Update()
     {
-        if (!player_as.isPlaying)
-        {
-            // todo may need a delay here of no music playing for a bit
-            print("not playing");
-            StopAllCoroutines();
-            StartCoroutine(FadeInNewClip(main_game_music));
-        }
+        // should be covered in transitions from areas
+        //if (!player_as.isPlaying)
+        //{
+        //    // todo may need a delay here of no music playing for a bit
+        //    print("not playing");
+        //    StopAllCoroutines();
+        //    StartCoroutine(FadeInNewClip(main_game_music));
+        //}
     }
 
-    public void PlayNewClip(AudioClip cinematic_clip)
+    public void PlayMainMusic()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeOutOldClip(main_game_music));
+    }
+    public void PlayAreaClip(AudioClip cinematic_clip)
     {
         StopAllCoroutines();
         StartCoroutine(FadeOutOldClip(cinematic_clip));
+    }
+
+    public void PlayEntranceClipAndAreaClip(AudioClip entrance_clip, AudioClip area_clip)
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeOutOldClip(entrance_clip));
     }
 
     private IEnumerator FadeOutOldClip(AudioClip cinematic_clip)
@@ -38,7 +54,7 @@ public class SoundManager : MonoBehaviour
 
         while (fade_timer < time_to_fade)
         {
-            player_as.volume = Mathf.Lerp(1.0f, 0.0f, fade_timer / time_to_fade);
+            player_as.volume = Mathf.Lerp(max_volume, 0.0f, fade_timer / time_to_fade);
             fade_timer += Time.deltaTime;
             yield return null;
         }
@@ -58,7 +74,7 @@ public class SoundManager : MonoBehaviour
 
         while (fade_timer < time_to_fade)
         {
-            player_as.volume = Mathf.Lerp(0.0f, 1.0f, fade_timer / time_to_fade);
+            player_as.volume = Mathf.Lerp(0.0f, max_volume, fade_timer / time_to_fade);
             fade_timer += Time.deltaTime;
             yield return null;
         }

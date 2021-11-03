@@ -7,8 +7,9 @@ public class CinematicArea : MonoBehaviour
     public GameObject cinematic_camera;
     public GameObject cinematic_area_point;
     public GameObject regular_area_point;
-    public AudioClip cinematic_audioclip;
-    bool played_audioclip;
+    public AudioClip entrance_audioclip;
+    public AudioClip area_audioclip;
+    bool played_entrance_audioclip;
     GameObject player_camera;
     SoundManager sound_manager_script;
 
@@ -16,7 +17,7 @@ public class CinematicArea : MonoBehaviour
     {
         player_camera = GameObject.FindGameObjectWithTag("MainCamera");
         sound_manager_script = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-        played_audioclip = false;
+        played_entrance_audioclip = false;
     }
 
     private void OnTriggerExit(Collider collider)
@@ -29,13 +30,44 @@ public class CinematicArea : MonoBehaviour
             {
                 CameraManager.DisableAllEnabledCameras();
                 CameraManager.EnableCamera(player_camera);
+
+                
+                if (sound_manager_script.player_as.clip.name != sound_manager_script.main_game_music.name)
+                {
+                    //print("playing main music");
+                    sound_manager_script.PlayMainMusic();
+                }
             }
             else
             {
                 Player.last_camera_tr = Camera.main.transform;
                 CameraManager.DisableAllEnabledCameras();
                 CameraManager.EnableCamera(cinematic_camera);
+                if (!played_entrance_audioclip)
+                {
+                    //print("playing area entrance clip for the first and only time");
+                    sound_manager_script.PlayAreaClip(entrance_audioclip);
+                    played_entrance_audioclip = true;
+                    Invoke("PlayAreaClipAfterEntrance", entrance_audioclip.length + 1.0f);
+                }
+                else
+                {
+                    if (sound_manager_script.player_as.clip.name != area_audioclip.name)
+                    {
+                        //print("playing area ambient sound now on returning to area");
+                        sound_manager_script.PlayAreaClip(area_audioclip);
+                    }
+                }
             }
+        }
+    }
+
+    void PlayAreaClipAfterEntrance()
+    {
+        if (sound_manager_script.player_as.clip.name != sound_manager_script.main_game_music.name)
+        {
+            //print("playing area ambient sound now after entrance");
+            sound_manager_script.PlayAreaClip(area_audioclip);
         }
     }
 
@@ -43,12 +75,7 @@ public class CinematicArea : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            if (!played_audioclip)
-            {
-                print("go to sound manager and play new clip");
-                sound_manager_script.PlayNewClip(cinematic_audioclip);
-                played_audioclip = true;
-            }
+
         }
     }
 }

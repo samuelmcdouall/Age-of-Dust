@@ -4872,7 +4872,8 @@ MonoBehaviour:
   cinematic_camera: {fileID: 780174536}
   cinematic_area_point: {fileID: 0}
   regular_area_point: {fileID: 0}
-  cinematic_audioclip: {fileID: 0}
+  entrance_audioclip: {fileID: 0}
+  area_audioclip: {fileID: 0}
 --- !u!65 &1331507848
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5344,7 +5345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e6956ff13a87e4f882bdb51342d701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  main_game_music: {fileID: 8300000, guid: 8cdb7aab99a86f54581cdc249502e8ce, type: 3}
+  main_game_music: {fileID: 8300000, guid: a6ded691dd7c34e46add9a7a5637dc7d, type: 3}
+  max_volume: 0.05
 --- !u!1 &1431243693
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,7 +5668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474370699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.5}
+  m_LocalPosition: {x: 0, y: 0, z: -4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1793366941}
@@ -5989,7 +5991,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544269807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.5}
+  m_LocalPosition: {x: 0, y: 0, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1793366941}
@@ -7112,7 +7114,8 @@ MonoBehaviour:
   cinematic_camera: {fileID: 646049797}
   cinematic_area_point: {fileID: 1474370699}
   regular_area_point: {fileID: 1544269807}
-  cinematic_audioclip: {fileID: 8300000, guid: efda90709e10a6e49b669bf664c65911, type: 3}
+  entrance_audioclip: {fileID: 8300000, guid: efda90709e10a6e49b669bf664c65911, type: 3}
+  area_audioclip: {fileID: 8300000, guid: 52372d337dc6a6f4084fe3f4585fdb36, type: 3}
 --- !u!65 &1793366943
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7124,7 +7127,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6, y: 4, z: 4}
+  m_Size: {x: 6, y: 4, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1812891122 stripped
 Transform:
@@ -7436,10 +7439,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_move_force: 20
   player_top_speed: 3
-  player_jump_force: 10
+  player_jump_force: 15
   player_fall_force: 5
   double_jump_enabled: 0
-  jump_delay: 1
+  jump_delay: 0.5
   show_cursor: 0
 --- !u!1 &1887327032
 GameObject:
