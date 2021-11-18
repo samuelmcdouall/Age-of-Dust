@@ -7,7 +7,11 @@ public class Crystal : MonoBehaviour
     GameObject player;
     public GameObject interact_fx;
     public AudioClip interact_sfx;
+    public Material corrupted_material;
     public Material fixed_material;
+
+    public GameObject[] corrupted_objects;
+    Material[] original_materials;
 
 
     [SerializeField]
@@ -32,6 +36,12 @@ public class Crystal : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         crystal_fixed = false;
+        original_materials = new Material[corrupted_objects.Length];
+        for(int count = 0; count < corrupted_objects.Length; count++)
+        {
+            original_materials[count] = corrupted_objects[count].GetComponent<Renderer>().material;
+            corrupted_objects[count].GetComponent<Renderer>().material = corrupted_material;
+        }
         
     }
     void Update()
@@ -44,6 +54,7 @@ public class Crystal : MonoBehaviour
                 Instantiate(interact_fx, transform.position, Quaternion.identity);
                 AudioSource.PlayClipAtPoint(interact_sfx, transform.position);
                 GetComponent<Renderer>().material = fixed_material;
+                Invoke("ChangeMaterialsBackToOriginal", 1.0f);
             }
         }
         if (!crystal_fixed)
@@ -55,6 +66,14 @@ public class Crystal : MonoBehaviour
         {
             transform.Rotate(Vector3.up, Time.deltaTime * 360.0f / revolution_time_y_fixed);
             transform.Rotate(Vector3.right, Time.deltaTime * 360.0f / revolution_time_x_fixed);
+        }
+    }
+
+    void ChangeMaterialsBackToOriginal()
+    {
+        for (int count = 0; count < corrupted_objects.Length; count++)
+        {
+            corrupted_objects[count].GetComponent<Renderer>().material = original_materials[count];
         }
     }
 }
