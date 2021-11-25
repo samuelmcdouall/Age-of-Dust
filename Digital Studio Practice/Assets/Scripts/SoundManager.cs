@@ -7,14 +7,16 @@ public class SoundManager : MonoBehaviour
     [System.NonSerialized]
     public AudioSource player_as;
     public AudioClip main_game_music;
-    [SerializeField]
-    float max_volume;
+    //[SerializeField]
+    //float max_volume;
     // Start is called before the first frame update
     void Start()
     {
         player_as = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        player_as.velocityUpdateMode = AudioVelocityUpdateMode.Dynamic;
+        player_as.volume = VolumeManager.music_volume;
         player_as.clip = main_game_music;
-        player_as.volume = max_volume;
+        //player_as.volume = max_volume;
         player_as.Play();
     }
 
@@ -54,7 +56,7 @@ public class SoundManager : MonoBehaviour
 
         while (fade_timer < time_to_fade)
         {
-            player_as.volume = Mathf.Lerp(max_volume, 0.0f, fade_timer / time_to_fade);
+            player_as.volume = Mathf.Lerp(VolumeManager.music_volume, 0.0f, fade_timer / time_to_fade);
             fade_timer += Time.deltaTime;
             yield return null;
         }
@@ -74,7 +76,7 @@ public class SoundManager : MonoBehaviour
 
         while (fade_timer < time_to_fade)
         {
-            player_as.volume = Mathf.Lerp(0.0f, max_volume, fade_timer / time_to_fade);
+            player_as.volume = Mathf.Lerp(0.0f, VolumeManager.music_volume, fade_timer / time_to_fade);
             fade_timer += Time.deltaTime;
             yield return null;
         }
