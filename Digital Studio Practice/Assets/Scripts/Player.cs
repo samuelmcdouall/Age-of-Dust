@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     string jump_up_animation = "jump_up";
     string falling_down_animation = "falling_down";
 
+    public GameObject pause_menu;
+    public GameObject options_menu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,144 +53,147 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player_rb.velocity.magnitude > player_top_speed)
+        if (!pause_menu.activeSelf && !options_menu.activeSelf)
         {
-            float original_vertical_speed = player_rb.velocity.y;
-            player_rb.velocity = player_rb.velocity.normalized * player_top_speed;
-            player_rb.velocity = new Vector3(player_rb.velocity.x, original_vertical_speed, player_rb.velocity.z);
-        }
-        // able to jump only after 
-        if (GroundCheck.is_grounded)
-        {
-            player_ani.SetBool(falling_down_animation, false);
-            player_ani.SetBool(jump_up_animation, false);
-            if (!able_to_jump_off_ground && jump_delay_timer > jump_delay)
+            if (player_rb.velocity.magnitude > player_top_speed)
             {
-                able_to_jump_off_ground = true;
-                jump_delay_timer = 0.0f;
+                float original_vertical_speed = player_rb.velocity.y;
+                player_rb.velocity = player_rb.velocity.normalized * player_top_speed;
+                player_rb.velocity = new Vector3(player_rb.velocity.x, original_vertical_speed, player_rb.velocity.z);
             }
-            else if (!able_to_jump_off_ground) 
+            // able to jump only after 
+            if (GroundCheck.is_grounded)
             {
-                jump_delay_timer += Time.deltaTime;
+                player_ani.SetBool(falling_down_animation, false);
+                player_ani.SetBool(jump_up_animation, false);
+                if (!able_to_jump_off_ground && jump_delay_timer > jump_delay)
+                {
+                    able_to_jump_off_ground = true;
+                    jump_delay_timer = 0.0f;
+                }
+                else if (!able_to_jump_off_ground)
+                {
+                    jump_delay_timer += Time.deltaTime;
+                }
             }
-        }
-        else if (player_rb.velocity.y > 0.1f)
-        {
-            
-        }
-        else if (player_rb.velocity.y < -0.1f)
-        {
-            player_ani.SetBool(jump_up_animation, false);
-            player_ani.SetBool(falling_down_animation, true);
-            player_rb.AddForce(0.0f, -player_fall_force, 0.0f);
-        }
-        if (transform.position.y <= -10.0f)
-        {
-            transform.position = starting_position;
-        }
-        if (Camera.main)
-        {
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+            else if (player_rb.velocity.y > 0.1f)
             {
-                DetermineYIndependentVelocity(camera_tr.forward - camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-            {
-                DetermineYIndependentVelocity(camera_tr.forward + camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-            {
-                DetermineYIndependentVelocity(camera_tr.forward - camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
-            {
-                DetermineYIndependentVelocity(-camera_tr.forward + camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
-            {
-                DetermineYIndependentVelocity(-camera_tr.forward - camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.W))
-            {
-                DetermineYIndependentVelocity(camera_tr.forward);
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                DetermineYIndependentVelocity(-camera_tr.forward);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                DetermineYIndependentVelocity(camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                DetermineYIndependentVelocity(-camera_tr.right);
-            }
-            else
-            {
-                player_ani.SetBool(running_animation, false);
-            }
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-            {
-                DetermineYIndependentVelocity(last_camera_tr.forward - last_camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-            {
-                DetermineYIndependentVelocity(last_camera_tr.forward + last_camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-            {
-                DetermineYIndependentVelocity(last_camera_tr.forward - last_camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
-            {
-                DetermineYIndependentVelocity(-last_camera_tr.forward + last_camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
-            {
-                DetermineYIndependentVelocity(-last_camera_tr.forward - last_camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.W))
-            {
-                DetermineYIndependentVelocity(last_camera_tr.forward);
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                DetermineYIndependentVelocity(-last_camera_tr.forward);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                DetermineYIndependentVelocity(last_camera_tr.right);
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                DetermineYIndependentVelocity(-last_camera_tr.right);
-            }
-            else
-            {
-                player_ani.SetBool(running_animation, false);
-            }
-        }
 
-        if (able_to_jump_off_ground && double_jump_enabled)
-        {
-            jumped_twice = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (able_to_jump_off_ground)
-            {
-                player_ani.SetBool(jump_up_animation, true);
-                Invoke("JumpUp", 0.25f);
-                able_to_jump_off_ground = false;
             }
-            else if (!jumped_twice && double_jump_enabled)
+            else if (player_rb.velocity.y < -0.1f)
             {
-                player_rb.AddForce(0.0f, player_jump_force, 0.0f, ForceMode.Impulse);
-                jumped_twice = true;
+                player_ani.SetBool(jump_up_animation, false);
+                player_ani.SetBool(falling_down_animation, true);
+                player_rb.AddForce(0.0f, -player_fall_force, 0.0f);
+            }
+            if (transform.position.y <= -10.0f)
+            {
+                transform.position = starting_position;
+            }
+            if (Camera.main)
+            {
+                if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+                {
+                    DetermineYIndependentVelocity(camera_tr.forward - camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+                {
+                    DetermineYIndependentVelocity(camera_tr.forward + camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+                {
+                    DetermineYIndependentVelocity(camera_tr.forward - camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+                {
+                    DetermineYIndependentVelocity(-camera_tr.forward + camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+                {
+                    DetermineYIndependentVelocity(-camera_tr.forward - camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.W))
+                {
+                    DetermineYIndependentVelocity(camera_tr.forward);
+                }
+                else if (Input.GetKey(KeyCode.S))
+                {
+                    DetermineYIndependentVelocity(-camera_tr.forward);
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    DetermineYIndependentVelocity(camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.A))
+                {
+                    DetermineYIndependentVelocity(-camera_tr.right);
+                }
+                else
+                {
+                    player_ani.SetBool(running_animation, false);
+                }
+            }
+            else
+            {
+                if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+                {
+                    DetermineYIndependentVelocity(last_camera_tr.forward - last_camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+                {
+                    DetermineYIndependentVelocity(last_camera_tr.forward + last_camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+                {
+                    DetermineYIndependentVelocity(last_camera_tr.forward - last_camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+                {
+                    DetermineYIndependentVelocity(-last_camera_tr.forward + last_camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+                {
+                    DetermineYIndependentVelocity(-last_camera_tr.forward - last_camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.W))
+                {
+                    DetermineYIndependentVelocity(last_camera_tr.forward);
+                }
+                else if (Input.GetKey(KeyCode.S))
+                {
+                    DetermineYIndependentVelocity(-last_camera_tr.forward);
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    DetermineYIndependentVelocity(last_camera_tr.right);
+                }
+                else if (Input.GetKey(KeyCode.A))
+                {
+                    DetermineYIndependentVelocity(-last_camera_tr.right);
+                }
+                else
+                {
+                    player_ani.SetBool(running_animation, false);
+                }
+            }
+
+            if (able_to_jump_off_ground && double_jump_enabled)
+            {
+                jumped_twice = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (able_to_jump_off_ground)
+                {
+                    player_ani.SetBool(jump_up_animation, true);
+                    Invoke("JumpUp", 0.25f);
+                    able_to_jump_off_ground = false;
+                }
+                else if (!jumped_twice && double_jump_enabled)
+                {
+                    player_rb.AddForce(0.0f, player_jump_force, 0.0f, ForceMode.Impulse);
+                    jumped_twice = true;
+                }
             }
         }
     }
