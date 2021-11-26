@@ -4,28 +4,34 @@ using UnityEngine;
 
 public class PressurePad : MonoBehaviour
 {
-    //public Audio Source Needed
-    //public GameObject particle start/enable?
+    public GameObject fx;
+    public AudioClip sfx;
+    public GameObject[] triggered_objects;
 
-    Animator thisAnimator;
+    Animator pressure_pad_ani;
+    bool pressed;
     
     // Start is called before the first frame update
     void Start()
     {
-        thisAnimator = this.gameObject.GetComponent<Animator>();
+        pressure_pad_ani = GetComponent<Animator>();
+        pressed = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        if (!pressed && other.gameObject.CompareTag("Player"))
         {
-            thisAnimator.SetBool("IsPadActivated", true);
+            fx.SetActive(true);
+            AudioSource.PlayClipAtPoint(sfx, transform.position, VolumeManager.sfx_volume);
+            pressure_pad_ani.SetBool("IsPadActivated", true);
+
+            foreach(GameObject obj in triggered_objects)
+            {
+                obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
+            }
+
+            pressed = true;
         }
     }
 }
