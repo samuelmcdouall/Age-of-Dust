@@ -12,6 +12,7 @@ public class Crystal : MonoBehaviour
 
     public GameObject[] corrupted_objects;
     Material[] original_materials;
+    public GameObject[] animation_triggered_objects;
 
 
     [SerializeField]
@@ -54,6 +55,10 @@ public class Crystal : MonoBehaviour
                 Instantiate(interact_fx, transform.position, Quaternion.identity);
                 AudioSource.PlayClipAtPoint(interact_sfx, transform.position);
                 GetComponent<Renderer>().material = fixed_material;
+                foreach (GameObject obj in animation_triggered_objects)
+                {
+                    obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
+                }
                 Invoke("ChangeMaterialsBackToOriginal", 1.0f);
             }
         }

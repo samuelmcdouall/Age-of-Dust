@@ -6,12 +6,12 @@ public class PressurePad : MonoBehaviour
 {
     public GameObject fx;
     public AudioClip sfx;
-    public GameObject[] triggered_objects;
+    public GameObject[] animation_triggered_objects;
+    public GameObject puzzle_manager;
 
     Animator pressure_pad_ani;
     bool pressed;
     
-    // Start is called before the first frame update
     void Start()
     {
         pressure_pad_ani = GetComponent<Animator>();
@@ -22,16 +22,40 @@ public class PressurePad : MonoBehaviour
     {
         if (!pressed && other.gameObject.CompareTag("Player"))
         {
-            fx.SetActive(true);
+            if (fx)
+            {
+                fx.SetActive(true); // todo this will only play once, need to reset this (will need to instantiate this if want it playing multiple times, but i dont think it should)
+            }
             AudioSource.PlayClipAtPoint(sfx, transform.position, VolumeManager.sfx_volume);
-            pressure_pad_ani.SetBool("IsPadActivated", true);
+            pressure_pad_ani.SetTrigger("pad_down");
 
-            foreach(GameObject obj in triggered_objects)
+            foreach(GameObject obj in animation_triggered_objects)
             {
                 obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
             }
 
+            if (puzzle_manager)
+            {
+                puzzle_manager.GetComponent<PressurePadPuzzleManager>().PressurePadPressed(gameObject);
+            }
+
             pressed = true;
         }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (puzzle_manager && puzzle_manager.GetComponent<PressurePadPuzzleManager>().incorrect_combination)
+            {
+                puzzle_manager.GetComponent<PressurePadPuzzleManager>().ResetPuzzle();
+            }
+        }
+    }
+
+    public void ResetPad()
+    {
+        pressure_pad_ani.SetTrigger("pad_up");
+        pressed = false;
     }
 }
