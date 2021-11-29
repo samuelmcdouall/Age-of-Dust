@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 918720669963486269}
   - component: {fileID: 920136460899059697}
   - component: {fileID: 927864712894515109}
-  - component: {fileID: -3870119965356727719}
+  - component: {fileID: 8586920778365128462}
   m_Layer: 0
   m_Name: Desert_Pyramid_Medium
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-3870119965356727719
+--- !u!64 &8586920778365128462
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,6 +93,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300012, guid: 48dc4c6cddf48a943bf7251f1ba06c05, type: 3}
