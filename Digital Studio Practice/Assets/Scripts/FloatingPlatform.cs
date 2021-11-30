@@ -10,9 +10,9 @@ public class FloatingPlatform : MonoBehaviour
     bool should_rotate;
     PlatformStatus platform_moving_status;
     [SerializeField]
-    Transform upper_position;
+    Transform starting_position;
     [SerializeField]
-    Transform lower_position;
+    Transform end_position;
     [SerializeField]
     float transition_time;
     float current_transition_lerp_value;
@@ -41,7 +41,7 @@ public class FloatingPlatform : MonoBehaviour
                 }
                 else
                 {
-                    transform.position = Vector3.Lerp(upper_position.position, lower_position.position, current_transition_lerp_value / transition_time);
+                    transform.position = Vector3.Lerp(starting_position.position, end_position.position, current_transition_lerp_value / transition_time);
                     current_transition_lerp_value += Time.deltaTime;
                     if (current_transition_lerp_value > transition_time)
                     {
@@ -58,7 +58,7 @@ public class FloatingPlatform : MonoBehaviour
                 }
                 else
                 {
-                    transform.position = Vector3.Lerp(upper_position.position, lower_position.position, current_transition_lerp_value / transition_time);
+                    transform.position = Vector3.Lerp(starting_position.position, end_position.position, current_transition_lerp_value / transition_time);
                     current_transition_lerp_value -= Time.deltaTime;
                     if (current_transition_lerp_value < 0.0f)
                     {
