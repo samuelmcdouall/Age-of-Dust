@@ -53,7 +53,7 @@ public class Crystal : MonoBehaviour
             {
                 crystal_fixed = true;
                 Instantiate(interact_fx, transform.position, Quaternion.identity);
-                AudioSource.PlayClipAtPoint(interact_sfx, transform.position);
+                AudioSource.PlayClipAtPoint(interact_sfx, transform.position, VolumeManager.sfx_volume);
                 GetComponent<Renderer>().material = fixed_material;
                 foreach (GameObject obj in animation_triggered_objects)
                 {
