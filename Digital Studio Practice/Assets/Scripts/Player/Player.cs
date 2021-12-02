@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(player_ani.GetCurrentAnimatorStateInfo(0).ToString());
         if (!pause_menu.activeSelf && !options_menu.activeSelf)
         {
             if (player_rb.velocity.magnitude > player_top_speed)

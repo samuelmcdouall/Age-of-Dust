@@ -5,11 +5,6 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     public static bool is_grounded;
-
-    private void Update()
-    {
-        print("grounded: " + is_grounded);
-    }
     private void OnTriggerStay(Collider collider)
     {
         if (collider != null)
