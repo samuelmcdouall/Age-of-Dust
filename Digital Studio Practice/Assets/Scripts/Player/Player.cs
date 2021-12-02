@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     string running_animation = "running";
     string jump_up_animation = "jump_up";
     string falling_down_animation = "falling_down";
+    string land_animation = "land";
 
     public GameObject pause_menu;
     public GameObject options_menu;
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(player_ani.GetCurrentAnimatorStateInfo(0).ToString());
         if (!pause_menu.activeSelf && !options_menu.activeSelf)
         {
             if (player_rb.velocity.magnitude > player_top_speed)
@@ -64,7 +66,14 @@ public class Player : MonoBehaviour
             // able to jump only after 
             if (GroundCheck.is_grounded)
             {
-                player_ani.SetBool(falling_down_animation, false);
+                if (player_ani.GetCurrentAnimatorStateInfo(0).IsName("Jump Up"))
+                {
+                    player_ani.SetBool(falling_down_animation, true);
+                }
+                else
+                {
+                    player_ani.SetBool(falling_down_animation, false);
+                }
                 player_ani.SetBool(jump_up_animation, false);
                 if (!able_to_jump_off_ground && jump_delay_timer > jump_delay)
                 {
@@ -183,7 +192,7 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (able_to_jump_off_ground)
+                if (GroundCheck.is_grounded && able_to_jump_off_ground)
                 {
                     player_ani.SetBool(jump_up_animation, true);
                     Invoke("JumpUp", 0.25f);
