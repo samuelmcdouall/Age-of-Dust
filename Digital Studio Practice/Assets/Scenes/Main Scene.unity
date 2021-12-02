@@ -2515,10 +2515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07bda96e4a52724093319e60a45a31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_move_force: 20
-  player_top_speed: 3
-  player_jump_force: 20
-  player_fall_force: 5
+  player_move_force: 40
+  player_top_speed: 4
+  player_jump_force: 12.5
+  player_fall_force: 7.5
   double_jump_enabled: 0
   jump_delay: 1
   show_cursor: 0
