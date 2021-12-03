@@ -7,14 +7,14 @@ public class Crystal : MonoBehaviour
     GameObject player;
     public GameObject interact_UI;
     public GameObject interact_fx;
-    public AudioClip interact_sfx;
+    public AudioClip[] sfx_clips;
+    public float[] post_sfx_delays;
     public Material corrupted_material;
     public Material fixed_material;
 
     public GameObject[] corrupted_objects;
     Material[] original_materials;
     public GameObject[] animation_triggered_objects;
-
 
     [SerializeField]
     [Range(0.1f, 60.0f)]
@@ -58,7 +58,7 @@ public class Crystal : MonoBehaviour
             {
                 crystal_fixed = true;
                 Instantiate(interact_fx, transform.position, Quaternion.identity);
-                AudioSource.PlayClipAtPoint(interact_sfx, transform.position, VolumeManager.sfx_volume);
+                StartCoroutine(PlayAllSFXClips());
                 GetComponent<Renderer>().material = fixed_material;
                 foreach (GameObject obj in animation_triggered_objects)
                 {
@@ -91,6 +91,15 @@ public class Crystal : MonoBehaviour
         for (int count = 0; count < corrupted_objects.Length; count++)
         {
             corrupted_objects[count].GetComponent<Renderer>().material = original_materials[count];
+        }
+    }
+
+    IEnumerator PlayAllSFXClips()
+    {
+        for (int count = 0; count < sfx_clips.Length; count++)
+        {
+            AudioSource.PlayClipAtPoint(sfx_clips[count], transform.position, VolumeManager.sfx_volume);
+            yield return new WaitForSeconds(post_sfx_delays[count]);
         }
     }
 }

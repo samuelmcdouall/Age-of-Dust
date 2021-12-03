@@ -1249,8 +1249,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 581cfcf717b8c2e48b247653b09e9f0b, type: 3}
     - target: {fileID: 383245969260684163, guid: 71e2cf38183e33643bee5672968c35e5, type: 3}
+      propertyPath: sfx_clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 383245969260684163, guid: 71e2cf38183e33643bee5672968c35e5, type: 3}
+      propertyPath: sfx_clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d46cc6b66f4fe2c49856870d1f1e7177, type: 3}
+    - target: {fileID: 383245969260684163, guid: 71e2cf38183e33643bee5672968c35e5, type: 3}
+      propertyPath: sfx_clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 978286d387e5cf943bc954de9c7c46ed, type: 3}
+    - target: {fileID: 383245969260684163, guid: 71e2cf38183e33643bee5672968c35e5, type: 3}
+      propertyPath: post_sfx_delays.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 383245969260684163, guid: 71e2cf38183e33643bee5672968c35e5, type: 3}
       propertyPath: triggered_objects.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 383245969260684163, guid: 71e2cf38183e33643bee5672968c35e5, type: 3}
+      propertyPath: post_sfx_delays.Array.data[0]
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 383245969260684163, guid: 71e2cf38183e33643bee5672968c35e5, type: 3}
       propertyPath: triggered_objects.Array.data[0]
@@ -21915,6 +21935,11 @@ PrefabInstance:
       objectReference: {fileID: 1265763918}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
+--- !u!1 &1733543661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8623727148224305508, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
+  m_PrefabInstance: {fileID: 1733543660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1738020914
 GameObject:
   m_ObjectHideFlags: 0
@@ -22245,8 +22270,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1588830134}
     - target: {fileID: 6738304728411042769, guid: e788b14456aa07f42a0236349f8b8018, type: 3}
+      propertyPath: sfx_clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738304728411042769, guid: e788b14456aa07f42a0236349f8b8018, type: 3}
+      propertyPath: sfx_clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f88c795eb45ec94da0220e888f9e98c, type: 3}
+    - target: {fileID: 6738304728411042769, guid: e788b14456aa07f42a0236349f8b8018, type: 3}
+      propertyPath: sfx_clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 978286d387e5cf943bc954de9c7c46ed, type: 3}
+    - target: {fileID: 6738304728411042769, guid: e788b14456aa07f42a0236349f8b8018, type: 3}
+      propertyPath: post_sfx_delays.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738304728411042769, guid: e788b14456aa07f42a0236349f8b8018, type: 3}
       propertyPath: corrupted_objects.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738304728411042769, guid: e788b14456aa07f42a0236349f8b8018, type: 3}
+      propertyPath: post_sfx_delays.Array.data[0]
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 6738304728411042769, guid: e788b14456aa07f42a0236349f8b8018, type: 3}
       propertyPath: corrupted_objects.Array.data[0]
@@ -26097,11 +26142,11 @@ PrefabInstance:
     - target: {fileID: 4661843834863609911, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
       propertyPath: audio_listener
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1733543661}
     - target: {fileID: 4661843835170934946, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
       propertyPath: audio_listener
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1733543661}
     - target: {fileID: 4661843835740822654, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -26153,11 +26198,11 @@ PrefabInstance:
     - target: {fileID: 4661843835979339224, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
       propertyPath: audio_listener
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1733543661}
     - target: {fileID: 4661843835987267770, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
       propertyPath: audio_listener
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1733543661}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
 --- !u!4 &4712396481882536749 stripped
