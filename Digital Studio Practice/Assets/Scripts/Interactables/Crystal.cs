@@ -5,6 +5,7 @@ using UnityEngine;
 public class Crystal : MonoBehaviour
 {
     GameObject player;
+    public GameObject interact_UI;
     public GameObject interact_fx;
     public AudioClip interact_sfx;
     public Material corrupted_material;
@@ -49,6 +50,10 @@ public class Crystal : MonoBehaviour
     {
         if (!crystal_fixed && Vector3.Distance(player.transform.position, transform.position) <= player_interaction_threshold)
         {
+            if (!interact_UI.activeSelf)
+            {
+                interact_UI.SetActive(true);
+            }
             if (Input.GetKeyDown(KeyCode.E))
             {
                 crystal_fixed = true;
@@ -60,6 +65,13 @@ public class Crystal : MonoBehaviour
                     obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
                 }
                 Invoke("ChangeMaterialsBackToOriginal", 1.0f);
+            }
+        }
+        else
+        {
+            if (interact_UI.activeSelf)
+            {
+                interact_UI.SetActive(false);
             }
         }
         if (!crystal_fixed)

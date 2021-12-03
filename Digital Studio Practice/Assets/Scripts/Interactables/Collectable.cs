@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+    GameObject player;
+    public GameObject interact_UI;
     public AudioClip collect_sfx;
+    [SerializeField]
+    float player_interaction_threshold;
     [SerializeField]
     CollectableType collectable_type;
     bool player_nearby;
@@ -12,43 +16,44 @@ public class Collectable : MonoBehaviour
     void Start()
     {
         player_nearby = false;
-    }
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == "Player")
-        {
-            player_nearby = true;
-        }
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.gameObject.tag == "Player")
-        {
-            player_nearby = false;
-        }
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        if (player_nearby && Input.GetKeyDown(KeyCode.E))
+        player_nearby = Vector3.Distance(player.transform.position, transform.position) <= player_interaction_threshold;
+        if (player_nearby)
         {
-            AudioSource.PlayClipAtPoint(collect_sfx, transform.position, VolumeManager.sfx_volume);
-            switch (collectable_type)
+            if (!interact_UI.activeSelf)
             {
-                case CollectableType.orb:
-                    InventoryManager.orbs_collected++;
-                    print("picked up orb");
-                    break;
-                case CollectableType.key:
-                    InventoryManager.key_collected = true;
-                    print("picked up key");
-                    break;
-                default:
-                    break;
+                interact_UI.SetActive(true);
             }
-            
-            Destroy(gameObject);    
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                AudioSource.PlayClipAtPoint(collect_sfx, transform.position, VolumeManager.sfx_volume);
+                switch (collectable_type)
+                {
+                    case CollectableType.orb:
+                        InventoryManager.orbs_collected++;
+                        print("picked up orb");
+                        break;
+                    case CollectableType.key:
+                        InventoryManager.key_collected = true;
+                        print("picked up key");
+                        break;
+                    default:
+                        break;
+                }
+
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if (interact_UI.activeSelf)
+            {
+                interact_UI.SetActive(false);
+            }
         }
     }
 
