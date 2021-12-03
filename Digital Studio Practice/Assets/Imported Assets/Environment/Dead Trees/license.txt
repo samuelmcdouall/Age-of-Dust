@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dead Trees
+* source:	https://sketchfab.com/3d-models/dead-trees-0b36646f7e824d3b954052be91e7459a
+* author:	Caroli (https://sketchfab.com/Caroli)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dead Trees" (https://sketchfab.com/3d-models/dead-trees-0b36646f7e824d3b954052be91e7459a) by Caroli (https://sketchfab.com/Caroli) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
