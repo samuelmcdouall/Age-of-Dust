@@ -5,7 +5,8 @@ using UnityEngine;
 public class PressurePad : MonoBehaviour
 {
     public GameObject fx;
-    public AudioClip sfx;
+    public AudioClip[] sfx_clips;
+    public float[] post_sfx_delays;
     public GameObject[] animation_triggered_objects;
     public GameObject puzzle_manager;
 
@@ -26,7 +27,7 @@ public class PressurePad : MonoBehaviour
             {
                 fx.SetActive(true); // todo this will only play once, need to reset this (will need to instantiate this if want it playing multiple times, but i dont think it should)
             }
-            AudioSource.PlayClipAtPoint(sfx, transform.position, VolumeManager.sfx_volume);
+            StartCoroutine(PlayAllSFXClips());
             pressure_pad_ani.SetTrigger("pad_down");
 
             foreach(GameObject obj in animation_triggered_objects)
@@ -57,5 +58,15 @@ public class PressurePad : MonoBehaviour
     {
         pressure_pad_ani.SetTrigger("pad_up");
         pressed = false;
+    }
+
+
+    IEnumerator PlayAllSFXClips()
+    {
+        for (int count = 0; count < sfx_clips.Length; count++)
+        {
+            AudioSource.PlayClipAtPoint(sfx_clips[count], transform.position, VolumeManager.sfx_volume);
+            yield return new WaitForSeconds(post_sfx_delays[count]);
+        }
     }
 }
