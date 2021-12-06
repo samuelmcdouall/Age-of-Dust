@@ -37,6 +37,12 @@ public class Player : MonoBehaviour
     public GameObject pause_menu;
     public GameObject options_menu;
 
+    // Testing
+    [SerializeField]
+    bool player_can_sprint;
+    [SerializeField]
+    float player_top_sprint_speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,11 +62,23 @@ public class Player : MonoBehaviour
     {
         if (!pause_menu.activeSelf && !options_menu.activeSelf)
         {
-            if (player_rb.velocity.magnitude > player_top_speed)
+            if (Input.GetKey(KeyCode.LeftShift) && player_can_sprint)
             {
-                float original_vertical_speed = player_rb.velocity.y;
-                player_rb.velocity = player_rb.velocity.normalized * player_top_speed;
-                player_rb.velocity = new Vector3(player_rb.velocity.x, original_vertical_speed, player_rb.velocity.z);
+                if (player_rb.velocity.magnitude > player_top_sprint_speed)
+                {
+                    float original_vertical_speed = player_rb.velocity.y;
+                    player_rb.velocity = player_rb.velocity.normalized * player_top_sprint_speed;
+                    player_rb.velocity = new Vector3(player_rb.velocity.x, original_vertical_speed, player_rb.velocity.z);
+                }
+            }
+            else
+            {
+                if (player_rb.velocity.magnitude > player_top_speed)
+                {
+                    float original_vertical_speed = player_rb.velocity.y;
+                    player_rb.velocity = player_rb.velocity.normalized * player_top_speed;
+                    player_rb.velocity = new Vector3(player_rb.velocity.x, original_vertical_speed, player_rb.velocity.z);
+                }
             }
             // able to jump only after 
             if (GroundCheck.is_grounded)

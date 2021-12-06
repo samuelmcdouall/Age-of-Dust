@@ -12,6 +12,7 @@ public class Collectable : MonoBehaviour
     [SerializeField]
     CollectableType collectable_type;
     bool player_nearby;
+    public OrbCollectionUI orb_ui_script;
 
     void Start()
     {
@@ -35,6 +36,8 @@ public class Collectable : MonoBehaviour
                 {
                     case CollectableType.orb:
                         InventoryManager.orbs_collected++;
+                        orb_ui_script.UpdateUIText(InventoryManager.orbs_collected);
+                        orb_ui_script.DisplayOrbCollectionUI();
                         print("picked up orb");
                         break;
                     case CollectableType.key:
