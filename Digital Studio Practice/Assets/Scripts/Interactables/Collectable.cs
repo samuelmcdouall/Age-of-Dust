@@ -47,7 +47,7 @@ public class Collectable : MonoBehaviour
                     default:
                         break;
                 }
-
+                interact_UI.SetActive(false);
                 Destroy(gameObject);
             }
         }
