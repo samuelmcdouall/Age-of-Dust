@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody player_rb;
-    Animator player_ani;
+    [System.NonSerialized]
+    public Animator player_ani;
 
     [SerializeField]
     private float player_move_force;
@@ -29,10 +30,14 @@ public class Player : MonoBehaviour
     Vector3 starting_position;
 
     // Animations
-    string running_animation = "running";
+    [System.NonSerialized]
+    public string running_animation = "running";
     string jump_up_animation = "jump_up";
     string falling_down_animation = "falling_down";
     string land_animation = "land";
+
+    // Cinematics
+    bool enabled_controls;
 
     public GameObject pause_menu;
     public GameObject options_menu;
@@ -54,13 +59,22 @@ public class Player : MonoBehaviour
         jumped_twice = false;
         able_to_jump_off_ground = true;
         jump_delay_timer = 0.0f;
-
+        enabled_controls = true;
     }
 
-    // Update is called once per frame
+    public void DisableControlsForSeconds(float delay)
+    {
+        enabled_controls = false;
+        Invoke("EnableControls", delay);
+    }
+    void EnableControls()
+    {
+        enabled_controls = true;
+    }
+
     void Update()
     {
-        if (!pause_menu.activeSelf && !options_menu.activeSelf)
+        if (!pause_menu.activeSelf && !options_menu.activeSelf && enabled_controls)
         {
             if (Input.GetKey(KeyCode.LeftShift) && player_can_sprint)
             {

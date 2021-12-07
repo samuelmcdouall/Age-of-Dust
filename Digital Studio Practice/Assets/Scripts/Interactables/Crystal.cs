@@ -5,6 +5,7 @@ using UnityEngine;
 public class Crystal : MonoBehaviour
 {
     GameObject player;
+    GameObject player_rotation;
     public GameObject interact_UI;
     public GameObject interact_fx;
     public AudioClip[] sfx_clips;
@@ -33,10 +34,14 @@ public class Crystal : MonoBehaviour
     bool crystal_fixed;
     [SerializeField]
     float player_interaction_threshold;
+    public GameObject object_player_faces;
+    [SerializeField]
+    float disable_control_period;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        player_rotation = GameObject.FindGameObjectWithTag("PlayerRotation");
         crystal_fixed = false;
         original_materials = new Material[corrupted_objects.Length];
         for(int count = 0; count < corrupted_objects.Length; count++)
@@ -44,7 +49,6 @@ public class Crystal : MonoBehaviour
             original_materials[count] = corrupted_objects[count].GetComponent<Renderer>().material;
             corrupted_objects[count].GetComponent<Renderer>().material = corrupted_material;
         }
-        
     }
     void Update()
     {
@@ -65,6 +69,12 @@ public class Crystal : MonoBehaviour
                     obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
                 }
                 Invoke("ChangeMaterialsBackToOriginal", 1.0f);
+                if (object_player_faces)
+                {
+                    player.GetComponent<Player>().DisableControlsForSeconds(disable_control_period);
+                    player.GetComponent<Player>().player_ani.SetBool(player.GetComponent<Player>().running_animation, false);
+                    player_rotation.GetComponent<PlayerRotation>().LookAtTargetForSeconds(object_player_faces, disable_control_period);
+                }
             }
         }
         else

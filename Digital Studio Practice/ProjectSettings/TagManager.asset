@@ -15,6 +15,7 @@ TagManager:
   - PlayerModel
   - SoundManager
   - InteractUI
+  - PlayerRotation
   layers:
   - Default
   - TransparentFX

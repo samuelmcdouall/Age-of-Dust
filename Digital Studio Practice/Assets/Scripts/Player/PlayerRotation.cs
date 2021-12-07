@@ -9,15 +9,20 @@ public class PlayerRotation : MonoBehaviour
     float rotation_speed;
     public GameObject pause_menu;
     public GameObject options_menu;
+    GameObject player;
+
+    // Cinematics
+    bool enabled_controls;
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        enabled_controls = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!pause_menu.activeSelf && !options_menu.activeSelf)
+        if (!pause_menu.activeSelf && !options_menu.activeSelf && enabled_controls)
         {
             Transform camera_tr;
             if (Camera.main)
@@ -75,5 +80,23 @@ public class PlayerRotation : MonoBehaviour
     Quaternion RotateSlowly(Vector3 camera_pos)
     {
         return Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(camera_pos), rotation_speed);
+    }
+
+
+    public void LookAtTargetForSeconds(GameObject target, float delay)
+    {
+        Vector3 y_independent_target = new Vector3(target.transform.position.x, player.transform.position.y, target.transform.position.z);
+        transform.LookAt(y_independent_target);
+        DisableControlsForSeconds(delay);
+    }
+
+    void DisableControlsForSeconds(float delay)
+    {
+        enabled_controls = false;
+        Invoke("EnableControls", delay);
+    }
+    void EnableControls()
+    {
+        enabled_controls = true;
     }
 }
