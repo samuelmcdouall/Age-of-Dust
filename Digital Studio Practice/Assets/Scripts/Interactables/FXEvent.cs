@@ -13,11 +13,16 @@ public class FXEvent : MonoBehaviour
     public GameObject object_player_faces;
     [SerializeField]
     float disable_control_period;
+    [SerializeField]
+    float kneel_period;
+    public InspectEventUI inspect_event_ui_script;
+    float kneel_down_clip_time_offset;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         player_rotation = GameObject.FindGameObjectWithTag("PlayerRotation");
+        kneel_down_clip_time_offset = 4.0f;
         triggered = false;
     }
 
@@ -25,13 +30,20 @@ public class FXEvent : MonoBehaviour
     {
         if (!triggered && collider.gameObject.tag == "Player")
         {
-            fx.SetActive(true);
-            AudioSource.PlayClipAtPoint(sfx, transform.position, VolumeManager.sfx_volume);
+            //todo see if there are RET_IF macro equivalent 
+            if (fx)
+            {
+                fx.SetActive(true);
+            }
+            if (sfx)
+            {
+                AudioSource.PlayClipAtPoint(sfx, transform.position, VolumeManager.sfx_volume);
+            }
             triggered = true;
             if (object_player_faces)
             {
-                player.GetComponent<Player>().DisableControlsForSeconds(disable_control_period);
-                player.GetComponent<Player>().player_ani.SetBool(player.GetComponent<Player>().running_animation, false);
+                player.GetComponent<Player>().InspectAnimation(disable_control_period, kneel_period + kneel_down_clip_time_offset);
+                inspect_event_ui_script.DisplayInspectEventUI();
                 player_rotation.GetComponent<PlayerRotation>().LookAtTargetForSeconds(object_player_faces, disable_control_period);
             }
         }

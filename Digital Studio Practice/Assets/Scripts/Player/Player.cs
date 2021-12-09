@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     string jump_up_animation = "jump_up";
     string falling_down_animation = "falling_down";
     string land_animation = "land";
+    string kneel_animation = "kneel";
+    string stand_up_animation = "stand_up";
 
     // Cinematics
     bool enabled_controls;
@@ -70,6 +72,19 @@ public class Player : MonoBehaviour
     void EnableControls()
     {
         enabled_controls = true;
+    }
+
+    void StandUpAnimation()
+    {
+        player_ani.SetTrigger(stand_up_animation);
+    }
+
+    public void InspectAnimation(float control_disable_duration, float kneel_duration)
+    {
+        player_ani.SetBool(running_animation, false);
+        player_ani.SetTrigger(kneel_animation);
+        Invoke("StandUpAnimation", kneel_duration);
+        DisableControlsForSeconds(control_disable_duration);
     }
 
     void Update()
