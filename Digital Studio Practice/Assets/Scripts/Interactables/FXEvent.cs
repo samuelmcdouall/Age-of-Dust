@@ -15,7 +15,7 @@ public class FXEvent : MonoBehaviour
     float disable_control_period;
     [SerializeField]
     float kneel_period;
-    public InspectEventUI inspect_event_ui_script;
+    public DisplayUI display_ui_script;
     float kneel_down_clip_time_offset;
 
     void Start()
@@ -43,7 +43,7 @@ public class FXEvent : MonoBehaviour
             if (object_player_faces)
             {
                 player.GetComponent<Player>().InspectAnimation(disable_control_period, kneel_period + kneel_down_clip_time_offset);
-                inspect_event_ui_script.DisplayInspectEventUI();
+                display_ui_script.DisplayAnimatedUI();
                 player_rotation.GetComponent<PlayerRotation>().LookAtTargetForSeconds(object_player_faces, disable_control_period);
             }
         }

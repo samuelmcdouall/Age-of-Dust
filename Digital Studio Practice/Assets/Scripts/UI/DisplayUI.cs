@@ -1,20 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InspectEventUI : MonoBehaviour
+public class DisplayUI : MonoBehaviour
 {
     public Text ui_text;
-    Image ui_image;
+    [System.NonSerialized]
+    public Image ui_image;
 
-    [SerializeField]
-    float fade_in_time;
-    [SerializeField]
-    float display_time;
-    [SerializeField]
-    float fade_out_time;
-    // Start is called before the first frame update
+    public float fade_in_time;
+    public float display_time;
+    public float fade_out_time;
     void Start()
     {
         ui_image = GetComponent<Image>();
@@ -22,7 +18,7 @@ public class InspectEventUI : MonoBehaviour
         ui_text.color = new Color(ui_text.color.r, ui_text.color.g, ui_text.color.b, 0.0f);
     }
 
-    public void DisplayInspectEventUI()
+    public void DisplayAnimatedUI()
     {
         StartCoroutine(FadeInUIAndText());
     }
@@ -39,10 +35,10 @@ public class InspectEventUI : MonoBehaviour
             fade_in_timer += Time.deltaTime;
             yield return null;
         }
-        yield return StartCoroutine(DisplayUI());
+        yield return StartCoroutine(DisplayUIForTimePeriod());
     }
 
-    IEnumerator DisplayUI()
+    IEnumerator DisplayUIForTimePeriod()
     {
         yield return new WaitForSeconds(display_time);
         yield return StartCoroutine(FadeOutUIAndText());

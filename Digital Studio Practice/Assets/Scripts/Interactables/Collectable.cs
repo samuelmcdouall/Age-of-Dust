@@ -36,8 +36,8 @@ public class Collectable : MonoBehaviour
                 {
                     case CollectableType.orb:
                         InventoryManager.orbs_collected++;
-                        orb_ui_script.UpdateUIText(InventoryManager.orbs_collected);
-                        orb_ui_script.DisplayOrbCollectionUI();
+                        orb_ui_script.UpdateOrbCollectionText(InventoryManager.orbs_collected);
+                        orb_ui_script.DisplayAnimatedUI();
                         print("picked up orb");
                         break;
                     case CollectableType.key:

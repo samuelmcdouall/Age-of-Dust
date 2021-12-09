@@ -2927,7 +2927,7 @@ MonoBehaviour:
   object_player_faces: {fileID: 0}
   disable_control_period: 0
   kneel_period: 0
-  inspect_event_ui_script: {fileID: 0}
+  display_ui_script: {fileID: 0}
 --- !u!1 &437651274
 GameObject:
   m_ObjectHideFlags: 0
@@ -8529,7 +8529,7 @@ MonoBehaviour:
   object_player_faces: {fileID: 0}
   disable_control_period: 0
   kneel_period: 0
-  inspect_event_ui_script: {fileID: 0}
+  display_ui_script: {fileID: 0}
 --- !u!1 &683584846
 GameObject:
   m_ObjectHideFlags: 0
@@ -9699,6 +9699,7 @@ GameObject:
   - component: {fileID: 1075554437}
   - component: {fileID: 1075554436}
   - component: {fileID: 1075554438}
+  - component: {fileID: 1075554439}
   m_Layer: 5
   m_Name: DropShip Inspect UI
   m_TagString: Untagged
@@ -9771,9 +9772,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075554434}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89ad7ceccaadfac41b46e146a78dda53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui_text: {fileID: 308822396}
+  fade_in_time: 2
+  display_time: 5
+  fade_out_time: 2
+--- !u!114 &1075554439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075554434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: decef7d435f24f4499b233c7321060d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ui_text: {fileID: 308822396}
@@ -15953,7 +15970,7 @@ MonoBehaviour:
   object_player_faces: {fileID: 1411419149}
   disable_control_period: 16
   kneel_period: 5
-  inspect_event_ui_script: {fileID: 1075554438}
+  display_ui_script: {fileID: 1075554439}
 --- !u!135 &1411419152
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22458,10 +22475,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui_text: {fileID: 1449664641}
-  total_orb_count: 3
   fade_in_time: 2
   display_time: 3
   fade_out_time: 2
+  total_orb_count: 3
 --- !u!1001 &1655734874
 PrefabInstance:
   m_ObjectHideFlags: 0
