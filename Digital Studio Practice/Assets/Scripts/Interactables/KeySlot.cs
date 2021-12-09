@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KeySlot : MonoBehaviour
@@ -36,12 +34,19 @@ public class KeySlot : MonoBehaviour
     {
         if (player_nearby && !placed_object && InventoryManager.key_collected && Input.GetKeyDown(KeyCode.E))
         {
-            AudioSource.PlayClipAtPoint(place_sfx, transform.position, VolumeManager.sfx_volume);
-            key_object_placed.SetActive(true);
-            InventoryManager.key_collected = false;
-            placed_object = true;
-            print("placed key into slot");
+            PlaceKeyInSlot();
             //enabled = false; todo maybe look at using this later on
         }
+    }
+
+    void PlaceKeyInSlot()
+    {
+        if (place_sfx)
+        {
+            AudioSource.PlayClipAtPoint(place_sfx, transform.position, VolumeManager.sfx_volume);
+        }
+        key_object_placed.SetActive(true);
+        InventoryManager.key_collected = false;
+        placed_object = true;
     }
 }

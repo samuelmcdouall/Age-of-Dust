@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FXEvent : MonoBehaviour
 {
+    // General
     GameObject player;
+
+    [Header("Interaction")]
     GameObject player_rotation;
     public GameObject fx;
     public AudioClip sfx;
     bool triggered;
 
+    [Header("Inspect Object")]
     public GameObject object_player_faces;
     [SerializeField]
     float disable_control_period;
@@ -30,7 +32,7 @@ public class FXEvent : MonoBehaviour
     {
         if (!triggered && collider.gameObject.tag == "Player")
         {
-            //todo see if there are RET_IF macro equivalent 
+            triggered = true;
             if (fx)
             {
                 fx.SetActive(true);
@@ -39,13 +41,17 @@ public class FXEvent : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(sfx, transform.position, VolumeManager.sfx_volume);
             }
-            triggered = true;
             if (object_player_faces)
             {
-                player.GetComponent<Player>().InspectAnimation(disable_control_period, kneel_period + kneel_down_clip_time_offset);
-                display_ui_script.DisplayAnimatedUI();
-                player_rotation.GetComponent<PlayerRotation>().LookAtTargetForSeconds(object_player_faces, disable_control_period);
+                PlayerInspectsObject();
             }
         }
+    }
+
+    void PlayerInspectsObject()
+    {
+        player.GetComponent<Player>().InspectAnimation(disable_control_period, kneel_period + kneel_down_clip_time_offset);
+        display_ui_script.DisplayAnimatedUI();
+        player_rotation.GetComponent<PlayerRotation>().LookAtTargetForSeconds(object_player_faces, disable_control_period);
     }
 }

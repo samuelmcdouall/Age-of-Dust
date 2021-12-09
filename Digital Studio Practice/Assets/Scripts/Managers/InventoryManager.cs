@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
     public static int orbs_collected;
-    public static bool key_collected; // todo could change to int if we can have multiple keys at same time
+    public static bool key_collected;
     void Start()
     {
         orbs_collected = 0;

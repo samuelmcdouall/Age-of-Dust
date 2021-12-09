@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FloatingPlatform : MonoBehaviour
 {
+    [Header("Falling")]
     [SerializeField]
     bool should_descend;
-    [SerializeField]
-    bool should_rotate;
-    PlatformStatus platform_moving_status;
     [SerializeField]
     Transform starting_position;
     [SerializeField]
@@ -16,12 +12,18 @@ public class FloatingPlatform : MonoBehaviour
     [SerializeField]
     float transition_time;
     float current_transition_lerp_value;
+    FloatingPlatformStatus floating_platform_status;
+
+    [Header("Rotating")]
+    [SerializeField]
+    bool should_rotate;
     [SerializeField]
     [Range(0.1f,60.0f)]
     float revolution_time_y;
+
     void Start()
     {
-        platform_moving_status = PlatformStatus.stationary;
+        floating_platform_status = FloatingPlatformStatus.stationary;
         current_transition_lerp_value = 0.0f;
     }
 
@@ -33,61 +35,69 @@ public class FloatingPlatform : MonoBehaviour
         }
         if (should_descend)
         {
-            if (platform_moving_status == PlatformStatus.descending)
+            if (floating_platform_status == FloatingPlatformStatus.descending)
             {
-                if (current_transition_lerp_value == transition_time)
-                {
-                    platform_moving_status = PlatformStatus.stationary;
-                }
-                else
-                {
-                    transform.position = Vector3.Lerp(starting_position.position, end_position.position, current_transition_lerp_value / transition_time);
-                    current_transition_lerp_value += Time.deltaTime;
-                    if (current_transition_lerp_value > transition_time)
-                    {
-                        current_transition_lerp_value = transition_time;
-                    }
-                }
+                DescendPlatform();
             }
 
-            else if (platform_moving_status == PlatformStatus.ascending)
+            else if (floating_platform_status == FloatingPlatformStatus.ascending)
             {
-                if (current_transition_lerp_value == 0.0f)
-                {
-                    platform_moving_status = PlatformStatus.stationary;
-                }
-                else
-                {
-                    transform.position = Vector3.Lerp(starting_position.position, end_position.position, current_transition_lerp_value / transition_time);
-                    current_transition_lerp_value -= Time.deltaTime;
-                    if (current_transition_lerp_value < 0.0f)
-                    {
-                        current_transition_lerp_value = 0.0f;
-                    }
-                }
+                AscendPlatform();
             }
         }
     }
-    
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            print("player landed on platform");
-            platform_moving_status = PlatformStatus.descending;
-        }   
-    }
-    void OnCollisionExit(Collision collision)
-    {
-        print("player left platform");
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            platform_moving_status = PlatformStatus.ascending;
+            floating_platform_status = FloatingPlatformStatus.descending;
         }
     }
 
-    enum PlatformStatus
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            floating_platform_status = FloatingPlatformStatus.ascending;
+        }
+    }
+
+    void AscendPlatform()
+    {
+        if (current_transition_lerp_value == 0.0f)
+        {
+            floating_platform_status = FloatingPlatformStatus.stationary;
+        }
+        else
+        {
+            transform.position = Vector3.Lerp(starting_position.position, end_position.position, current_transition_lerp_value / transition_time);
+            current_transition_lerp_value -= Time.deltaTime;
+            if (current_transition_lerp_value < 0.0f)
+            {
+                current_transition_lerp_value = 0.0f;
+            }
+        }
+    }
+
+    void DescendPlatform()
+    {
+        if (current_transition_lerp_value == transition_time)
+        {
+            floating_platform_status = FloatingPlatformStatus.stationary;
+        }
+        else
+        {
+            transform.position = Vector3.Lerp(starting_position.position, end_position.position, current_transition_lerp_value / transition_time);
+            current_transition_lerp_value += Time.deltaTime;
+            if (current_transition_lerp_value > transition_time)
+            {
+                current_transition_lerp_value = transition_time;
+            }
+        }
+    }
+
+    enum FloatingPlatformStatus
     {
         descending,
         ascending,

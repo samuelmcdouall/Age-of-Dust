@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour
@@ -31,24 +29,7 @@ public class Collectable : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-                AudioSource.PlayClipAtPoint(collect_sfx, transform.position, VolumeManager.sfx_volume);
-                switch (collectable_type)
-                {
-                    case CollectableType.orb:
-                        InventoryManager.orbs_collected++;
-                        orb_ui_script.UpdateOrbCollectionText(InventoryManager.orbs_collected);
-                        orb_ui_script.DisplayAnimatedUI();
-                        print("picked up orb");
-                        break;
-                    case CollectableType.key:
-                        InventoryManager.key_collected = true;
-                        print("picked up key");
-                        break;
-                    default:
-                        break;
-                }
-                interact_UI.SetActive(false);
-                Destroy(gameObject);
+                PickupCollectable();
             }
         }
         else
@@ -58,6 +39,29 @@ public class Collectable : MonoBehaviour
                 interact_UI.SetActive(false);
             }
         }
+    }
+
+    void PickupCollectable()
+    {
+        if (collect_sfx)
+        {
+            AudioSource.PlayClipAtPoint(collect_sfx, transform.position, VolumeManager.sfx_volume);
+        }
+        switch (collectable_type)
+        {
+            case CollectableType.orb:
+                InventoryManager.orbs_collected++;
+                orb_ui_script.UpdateOrbCollectionText(InventoryManager.orbs_collected);
+                orb_ui_script.DisplayAnimatedUI();
+                break;
+            case CollectableType.key:
+                InventoryManager.key_collected = true;
+                break;
+            default:
+                break;
+        }
+        interact_UI.SetActive(false);
+        Destroy(gameObject);
     }
 
     enum CollectableType
