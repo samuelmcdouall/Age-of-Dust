@@ -8,7 +8,7 @@ public class SliderLogic : MonoBehaviour
     void OnEnable()
     {
         print("options enabled");
-        // todo this gets done twice, need to sort out
+        // todo this gets done twice, need to sort out, move to another script maybe the menu music 
         sfx_slider.value = VolumeManager.sfx_volume;
         music_slider.value = VolumeManager.music_volume;
     }
