@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //todo refactor this entire class
     Rigidbody player_rb;
     [System.NonSerialized]
     public Animator player_ani;

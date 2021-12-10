@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("Rotation")]
     [SerializeField]
     float rotation_speed;
+    GameObject player;
+
+    [Header("Menus")]
     public GameObject pause_menu;
     public GameObject options_menu;
-    GameObject player;
 
     // Cinematics
     bool enabled_controls;
@@ -19,7 +19,6 @@ public class PlayerRotation : MonoBehaviour
         enabled_controls = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!pause_menu.activeSelf && !options_menu.activeSelf && enabled_controls)
@@ -87,10 +86,10 @@ public class PlayerRotation : MonoBehaviour
     {
         Vector3 y_independent_target = new Vector3(target.transform.position.x, player.transform.position.y, target.transform.position.z);
         transform.LookAt(y_independent_target);
-        DisableControlsForSeconds(delay);
+        DisableRotationForSeconds(delay);
     }
 
-    void DisableControlsForSeconds(float delay)
+    void DisableRotationForSeconds(float delay)
     {
         enabled_controls = false;
         Invoke("EnableControls", delay);

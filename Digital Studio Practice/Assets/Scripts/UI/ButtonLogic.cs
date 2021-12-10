@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonLogic : MonoBehaviour
 {
+    [Header("Menus")]
     public GameObject menu_canvas;
     public GameObject options_canvas;
+
+    [Header("SFX")]
     public AudioClip click_sfx;
     public GameObject audio_listener;
-    void Start()
-    {
-        //GetComponent<AudioSource>().volume = VolumeManager.sfx_volume;
-    }
 
     public void ClickNewGameButton()
     {
@@ -28,6 +25,7 @@ public class ButtonLogic : MonoBehaviour
     }
     public void ClickExitButton()
     {
+        // todo remove this after testing
         print("QUIT GAME (remove this after testing)");
         PlayClickSFX();
         Application.Quit();
@@ -51,11 +49,11 @@ public class ButtonLogic : MonoBehaviour
         PlayClickSFX();
     }
 
-
-    private void PlayClickSFX()
+    void PlayClickSFX()
     {
         if (Time.timeScale == 0.0f)
         {
+            // todo work around comment because unity is annoying
             Time.timeScale = 1.0f;
             AudioSource.PlayClipAtPoint(click_sfx, audio_listener.transform.position, VolumeManager.sfx_volume);
             Time.timeScale = 0.0f;

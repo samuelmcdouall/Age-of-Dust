@@ -1,15 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PressurePad : MonoBehaviour
 {
+    [Header("Interaction")]
     public GameObject fx;
     public AudioClip[] sfx_clips;
     public float[] post_sfx_delays;
     public GameObject[] animation_triggered_objects;
     public GameObject puzzle_manager;
-
     Animator pressure_pad_ani;
     bool pressed;
     
@@ -27,22 +26,11 @@ public class PressurePad : MonoBehaviour
             {
                 fx.SetActive(true); // todo this will only play once, need to reset this (will need to instantiate this if want it playing multiple times, but i dont think it should)
             }
-            StartCoroutine(PlayAllSFXClips());
-            pressure_pad_ani.SetTrigger("pad_down");
 
-            foreach(GameObject obj in animation_triggered_objects)
-            {
-                obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
-            }
-
-            if (puzzle_manager)
-            {
-                puzzle_manager.GetComponent<PressurePadPuzzleManager>().PressurePadPressed(gameObject);
-            }
-
-            pressed = true;
+            DepressPad();
         }
     }
+
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -54,12 +42,19 @@ public class PressurePad : MonoBehaviour
         }
     }
 
-    public void ResetPad()
+    void DepressPad()
     {
-        pressure_pad_ani.SetTrigger("pad_up");
-        pressed = false;
-    }
+        StartCoroutine(PlayAllSFXClips());
+        AnimateSelectedObjects();
+        pressure_pad_ani.SetTrigger("pad_down");
 
+        if (puzzle_manager)
+        {
+            puzzle_manager.GetComponent<PressurePadPuzzleManager>().PressurePadPressed(gameObject);
+        }
+
+        pressed = true;
+    }
 
     IEnumerator PlayAllSFXClips()
     {
@@ -68,5 +63,19 @@ public class PressurePad : MonoBehaviour
             AudioSource.PlayClipAtPoint(sfx_clips[count], transform.position, VolumeManager.sfx_volume);
             yield return new WaitForSeconds(post_sfx_delays[count]);
         }
+    }
+
+    void AnimateSelectedObjects()
+    {
+        foreach (GameObject obj in animation_triggered_objects)
+        {
+            obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
+        }
+    }
+
+    public void ResetPad()
+    {
+        pressure_pad_ani.SetTrigger("pad_up");
+        pressed = false;
     }
 }

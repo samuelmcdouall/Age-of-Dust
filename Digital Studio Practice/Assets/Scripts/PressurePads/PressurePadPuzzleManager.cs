@@ -1,21 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PressurePadPuzzleManager : MonoBehaviour
 {
-    //todo could make this for any number with a list
+    [Header("Pressure Pads")]
     public GameObject[] pressure_pads;
     public GameObject[] animation_triggered_objects;
     [System.NonSerialized]
     public bool incorrect_combination;
-    bool puzzle_reset;
     List<int> combination;
 
     void Start()
     {
         incorrect_combination = false;
-        puzzle_reset = false;
         combination = new List<int>();
     }
 
@@ -50,6 +47,14 @@ public class PressurePadPuzzleManager : MonoBehaviour
         }
     }
 
+    void PuzzleComplete()
+    {
+        foreach (GameObject obj in animation_triggered_objects)
+        {
+            obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
+        }
+    }
+
     public void ResetPuzzle()
     {
         combination.Clear();
@@ -57,14 +62,6 @@ public class PressurePadPuzzleManager : MonoBehaviour
         foreach (GameObject pad in pressure_pads)
         {
             pad.GetComponent<PressurePad>().ResetPad();
-        }
-    }
-
-    void PuzzleComplete()
-    {
-        foreach (GameObject obj in animation_triggered_objects)
-        {
-            obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
         }
     }
 }

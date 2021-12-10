@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]
     GameObject start_point;
     [SerializeField]
@@ -18,6 +15,7 @@ public class MovingPlatform : MonoBehaviour
     bool stopped;
     bool moving_to_end_point;
     float platform_destination_threshold;
+    MovingPlatformStatus moving_platform_status; // todo incorporate this
     void Start()
     {
         stop_timer = 0.0f;
@@ -25,9 +23,9 @@ public class MovingPlatform : MonoBehaviour
         moving_to_end_point = true;
         start_to_end_direction = (end_point.transform.position - start_point.transform.position).normalized;
         platform_destination_threshold = 0.1f;
+        moving_platform_status = MovingPlatformStatus.stationary;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!stopped)
@@ -64,4 +62,12 @@ public class MovingPlatform : MonoBehaviour
             }
         }
     }
+
+    enum MovingPlatformStatus
+    {
+        moving_to_end,
+        moving_to_start,
+        stationary
+    }
+
 }

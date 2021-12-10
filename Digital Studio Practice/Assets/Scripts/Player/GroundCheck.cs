@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
     public static bool is_grounded;
-    private void OnTriggerStay(Collider collider)
+    void OnTriggerStay(Collider collider)
     {
         if (collider != null)
         {
@@ -17,7 +15,7 @@ public class GroundCheck : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider collider)
+    void OnTriggerExit(Collider collider)
     {
         is_grounded = false;
     }
