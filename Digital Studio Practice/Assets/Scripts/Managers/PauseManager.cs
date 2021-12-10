@@ -18,11 +18,13 @@ public class PauseManager : MonoBehaviour
             {
                 pause_menu.SetActive(true);
                 Time.timeScale = 0.0f;
+                Cursor.visible = true;
             }
             else
             {
                 pause_menu.SetActive(false);
                 Time.timeScale = 1.0f;
+                Cursor.visible = false;
             }
         }
     }

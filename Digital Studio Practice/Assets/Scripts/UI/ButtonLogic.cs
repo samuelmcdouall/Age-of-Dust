@@ -40,6 +40,7 @@ public class ButtonLogic : MonoBehaviour
     {
         menu_canvas.SetActive(false);
         Time.timeScale = 1.0f;
+        Cursor.visible = false;
         PlayClickSFX();
     }
     public void ClickExitToMenuButton()
