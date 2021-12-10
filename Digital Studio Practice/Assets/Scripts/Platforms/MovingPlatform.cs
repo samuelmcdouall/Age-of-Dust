@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    [Header("Moving Paramters")]
     [SerializeField]
     GameObject start_point;
     [SerializeField]
@@ -10,12 +11,13 @@ public class MovingPlatform : MonoBehaviour
     float platform_speed;
     [SerializeField]
     float stop_duration;
+
     float stop_timer;
     Vector3 start_to_end_direction;
     bool stopped;
     bool moving_to_end_point;
     float platform_destination_threshold;
-    MovingPlatformStatus moving_platform_status; // todo incorporate this
+    MovingPlatformStatus moving_platform_status;
     void Start()
     {
         stop_timer = 0.0f;
@@ -28,38 +30,58 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
-        if (!stopped)
+        if (moving_platform_status == MovingPlatformStatus.moving_to_end)
         {
+            MovePlatformToEndPoint();
+        }
+        else if (moving_platform_status == MovingPlatformStatus.moving_to_start)
+        {
+            MovePlatformToStartPoint();
+        }
+        else if (moving_platform_status == MovingPlatformStatus.stationary)
+        {
+            DetermineIfTimeToMovePlatform();
+        }
+
+    }
+
+    void MovePlatformToEndPoint()
+    {
+        transform.position += start_to_end_direction * platform_speed * Time.deltaTime;
+        if (Vector3.Distance(transform.position, end_point.transform.position) < platform_destination_threshold)
+        {
+            moving_platform_status = MovingPlatformStatus.stationary;
+            moving_to_end_point = false;
+        }
+    }
+
+    void MovePlatformToStartPoint()
+    {
+        transform.position -= start_to_end_direction * platform_speed * Time.deltaTime;
+        if (Vector3.Distance(transform.position, start_point.transform.position) < platform_destination_threshold)
+        {
+            moving_platform_status = MovingPlatformStatus.stationary;
+            moving_to_end_point = true;
+        }
+    }
+
+    void DetermineIfTimeToMovePlatform()
+    {
+        if (stop_timer > stop_duration)
+        {
+            stop_timer = 0.0f;
             if (moving_to_end_point)
             {
-                transform.position += start_to_end_direction * platform_speed * Time.deltaTime;
-                if (Vector3.Distance(transform.position, end_point.transform.position) < platform_destination_threshold)
-                {
-                    stopped = true;
-                    moving_to_end_point = false;
-                }
+                moving_platform_status = MovingPlatformStatus.moving_to_end;
             }
             else
             {
-                transform.position -= start_to_end_direction * platform_speed * Time.deltaTime;
-                if (Vector3.Distance(transform.position, start_point.transform.position) < platform_destination_threshold)
-                {
-                    stopped = true;
-                    moving_to_end_point = true;
-                }
+                moving_platform_status = MovingPlatformStatus.moving_to_start;
             }
         }
         else
         {
-            if (stop_timer > stop_duration)
-            {
-                stop_timer = 0.0f;
-                stopped = false;
-            }
-            else
-            {
-                stop_timer += Time.deltaTime;
-            }
+            stop_timer += Time.deltaTime;
         }
     }
 
