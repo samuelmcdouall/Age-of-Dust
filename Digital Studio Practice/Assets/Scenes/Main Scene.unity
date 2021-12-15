@@ -9463,7 +9463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e6956ff13a87e4f882bdb51342d701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  main_game_music: {fileID: 8300000, guid: a6ded691dd7c34e46add9a7a5637dc7d, type: 3}
+  main_game_music: {fileID: 8300000, guid: 8219b5e72a4613447bc7607c6664258f, type: 3}
 --- !u!4 &960809719
 Transform:
   m_ObjectHideFlags: 0
