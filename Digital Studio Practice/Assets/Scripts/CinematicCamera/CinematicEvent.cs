@@ -22,9 +22,9 @@ public class CinematicEvent : MonoBehaviour
         CameraManager.EnableCamera(player_camera);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (!triggered_cinematic_event)
+        if (!triggered_cinematic_event && other.gameObject.CompareTag("Player"))
         {
             triggered_cinematic_event = true;
             Player.last_camera_tr = Camera.main.transform;
