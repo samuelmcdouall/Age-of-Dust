@@ -10,6 +10,8 @@ public class MenuMusic : MonoBehaviour
         menu_as.velocityUpdateMode = AudioVelocityUpdateMode.Dynamic;
         menu_as.volume = VolumeManager.music_volume;
         //todo possible issue here if volume manager is initialized after, it will intially be set to 0 rather than getting the value from player prefs
+        //todo this is wrong place to do initial setup, maybe rethink where to put this
+        Cursor.visible = true;
     }
 
     public static void UpdateMenuMusicVolume(float value)
