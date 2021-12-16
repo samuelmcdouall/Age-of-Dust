@@ -7,6 +7,6 @@ public class OrbCollectionUI : DisplayUI
 
     public void UpdateOrbCollectionText(int orbs_collected)
     {
-        ui_text.text = "Orbs Collected" + "\n" + orbs_collected + "/" + total_orb_count;
+        ui_text.text = orbs_collected + "/" + total_orb_count;
     }
 }
