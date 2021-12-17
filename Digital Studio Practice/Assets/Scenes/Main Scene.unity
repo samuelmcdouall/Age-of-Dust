@@ -23358,6 +23358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8623727148224305509, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
       propertyPath: pause_menu
       value: 
@@ -23368,7 +23372,7 @@ PrefabInstance:
       objectReference: {fileID: 1265763918}
     - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
       propertyPath: player_can_sprint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
       propertyPath: player_move_force
@@ -28347,6 +28351,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661843834863609911, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
+      propertyPath: click_sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: b9b84f4adc8f1d04c9779a8ddac73c20, type: 3}
+    - target: {fileID: 4661843834863609911, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
       propertyPath: audio_listener
       value: 
       objectReference: {fileID: 1733543661}
@@ -28358,6 +28366,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4661843835170934946, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
+      propertyPath: click_sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: b9b84f4adc8f1d04c9779a8ddac73c20, type: 3}
     - target: {fileID: 4661843835170934946, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
       propertyPath: audio_listener
       value: 
@@ -28427,6 +28439,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661843835979339224, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
+      propertyPath: click_sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: b9b84f4adc8f1d04c9779a8ddac73c20, type: 3}
+    - target: {fileID: 4661843835979339224, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
       propertyPath: audio_listener
       value: 
       objectReference: {fileID: 1733543661}
@@ -28434,6 +28450,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4661843835987267770, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
+      propertyPath: click_sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: b9b84f4adc8f1d04c9779a8ddac73c20, type: 3}
     - target: {fileID: 4661843835987267770, guid: 88b6c18c38c73cc4cb594704868c279a, type: 3}
       propertyPath: audio_listener
       value: 
