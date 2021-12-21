@@ -45,7 +45,7 @@ public class Collectable : MonoBehaviour
     {
         if (collect_sfx)
         {
-            AudioSource.PlayClipAtPoint(collect_sfx, transform.position, VolumeManager.sfx_volume);
+            AudioSource.PlayClipAtPoint(collect_sfx, transform.position, SettingsManager.sfx_volume);
         }
         switch (collectable_type)
         {

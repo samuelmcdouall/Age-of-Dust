@@ -43,7 +43,7 @@ public class KeySlot : MonoBehaviour
     {
         if (place_sfx)
         {
-            AudioSource.PlayClipAtPoint(place_sfx, transform.position, VolumeManager.sfx_volume);
+            AudioSource.PlayClipAtPoint(place_sfx, transform.position, SettingsManager.sfx_volume);
         }
         key_object_placed.SetActive(true);
         InventoryManager.key_collected = false;

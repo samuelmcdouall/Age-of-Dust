@@ -14,7 +14,7 @@ public class ButtonLogic : MonoBehaviour
     public void ClickNewGameButton()
     {
         SceneManager.LoadScene("Main Scene");
-        AudioSource.PlayClipAtPoint(click_sfx, audio_listener.transform.position, VolumeManager.sfx_volume);
+        AudioSource.PlayClipAtPoint(click_sfx, audio_listener.transform.position, SettingsManager.sfx_volume);
     }
     public void ClickOptionsButton()
     {
@@ -56,12 +56,12 @@ public class ButtonLogic : MonoBehaviour
         {
             // todo work around comment because unity is annoying
             Time.timeScale = 1.0f;
-            AudioSource.PlayClipAtPoint(click_sfx, audio_listener.transform.position, VolumeManager.sfx_volume);
+            AudioSource.PlayClipAtPoint(click_sfx, audio_listener.transform.position, SettingsManager.sfx_volume);
             Time.timeScale = 0.0f;
         }
         else
         {
-            AudioSource.PlayClipAtPoint(click_sfx, audio_listener.transform.position, VolumeManager.sfx_volume);
+            AudioSource.PlayClipAtPoint(click_sfx, audio_listener.transform.position, SettingsManager.sfx_volume);
         }
     }
 }

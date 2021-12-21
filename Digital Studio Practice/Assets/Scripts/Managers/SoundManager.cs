@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     {
         player_as = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         player_as.velocityUpdateMode = AudioVelocityUpdateMode.Dynamic;
-        player_as.volume = VolumeManager.music_volume;
+        player_as.volume = SettingsManager.music_volume;
         player_as.clip = main_game_music;
         player_as.Play();
     }
@@ -39,7 +39,7 @@ public class SoundManager : MonoBehaviour
 
         while (fade_timer < time_to_fade)
         {
-            player_as.volume = Mathf.Lerp(VolumeManager.music_volume, 0.0f, fade_timer / time_to_fade);
+            player_as.volume = Mathf.Lerp(SettingsManager.music_volume, 0.0f, fade_timer / time_to_fade);
             fade_timer += Time.deltaTime;
             yield return null;
         }
@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
 
         while (fade_timer < time_to_fade)
         {
-            player_as.volume = Mathf.Lerp(0.0f, VolumeManager.music_volume, fade_timer / time_to_fade);
+            player_as.volume = Mathf.Lerp(0.0f, SettingsManager.music_volume, fade_timer / time_to_fade);
             fade_timer += Time.deltaTime;
             yield return null;
         }

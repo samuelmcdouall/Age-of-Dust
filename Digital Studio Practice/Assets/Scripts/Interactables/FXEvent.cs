@@ -39,7 +39,7 @@ public class FXEvent : MonoBehaviour
             }
             if (sfx)
             {
-                AudioSource.PlayClipAtPoint(sfx, transform.position, VolumeManager.sfx_volume);
+                AudioSource.PlayClipAtPoint(sfx, transform.position, SettingsManager.sfx_volume);
             }
             if (object_player_faces)
             {

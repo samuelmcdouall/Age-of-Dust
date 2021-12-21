@@ -29,8 +29,8 @@ public class RotationCamera : MonoBehaviour
 
     void GetMouseInput()
     {
-        mouse_x += Input.GetAxis("Mouse X") * rotation_speed;
-        mouse_y -= Input.GetAxis("Mouse Y") * rotation_speed;
+        mouse_x += Input.GetAxis("Mouse X") * SettingsManager.look_sensitivity;
+        mouse_y -= Input.GetAxis("Mouse Y") * SettingsManager.look_sensitivity;
         mouse_y = Mathf.Clamp(mouse_y, mouse_y_min_clamp, mouse_y_max_clamp);
     }
 }

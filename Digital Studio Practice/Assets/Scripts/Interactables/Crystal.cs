@@ -103,7 +103,7 @@ public class Crystal : MonoBehaviour
     {
         for (int count = 0; count < sfx_clips.Length; count++)
         {
-            AudioSource.PlayClipAtPoint(sfx_clips[count], transform.position, VolumeManager.sfx_volume);
+            AudioSource.PlayClipAtPoint(sfx_clips[count], transform.position, SettingsManager.sfx_volume);
             yield return new WaitForSeconds(post_sfx_delays[count]);
         }
     }
