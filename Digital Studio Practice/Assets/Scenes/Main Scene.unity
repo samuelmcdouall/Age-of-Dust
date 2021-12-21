@@ -1833,7 +1833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start_point: {fileID: 426879712}
   end_point: {fileID: 911642884}
-  platform_speed: 4
+  transition_time: 8
   stop_duration: 1.5
 --- !u!1001 &178453401
 PrefabInstance:
@@ -9818,7 +9818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start_point: {fileID: 1271198815}
   end_point: {fileID: 2018799884}
-  platform_speed: 3
+  transition_time: 8
   stop_duration: 1.5
 --- !u!1 &960809717
 GameObject:

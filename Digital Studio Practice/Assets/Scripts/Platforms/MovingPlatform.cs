@@ -8,6 +8,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField]
     GameObject end_point;
     [SerializeField]
+    float transition_time;
     float platform_speed;
     [SerializeField]
     float stop_duration;
@@ -26,6 +27,7 @@ public class MovingPlatform : MonoBehaviour
         start_to_end_direction = (end_point.transform.position - start_point.transform.position).normalized;
         platform_destination_threshold = 0.1f;
         moving_platform_status = MovingPlatformStatus.stationary;
+        platform_speed = Vector3.Distance(start_point.transform.position, end_point.transform.position) / transition_time;
     }
 
     void Update()
