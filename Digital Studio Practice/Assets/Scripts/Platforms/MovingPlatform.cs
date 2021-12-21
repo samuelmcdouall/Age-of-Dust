@@ -9,9 +9,9 @@ public class MovingPlatform : MonoBehaviour
     GameObject end_point;
     [SerializeField]
     float transition_time;
-    float platform_speed;
     [SerializeField]
     float stop_duration;
+    float platform_speed;
 
     float stop_timer;
     Vector3 start_to_end_direction;
