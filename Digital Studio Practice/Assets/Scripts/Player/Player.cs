@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 
     public GameObject pause_menu;
     public GameObject options_menu;
+    public GameObject controls_menu;
 
     // Testing
     [SerializeField]
@@ -90,7 +91,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (!pause_menu.activeSelf && !options_menu.activeSelf && enabled_controls)
+        if (!pause_menu.activeSelf && !options_menu.activeSelf && !controls_menu.activeSelf && enabled_controls)
         {
             if (Input.GetKey(KeyCode.LeftShift) && player_can_sprint)
             {

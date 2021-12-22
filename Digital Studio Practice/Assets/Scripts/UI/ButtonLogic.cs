@@ -6,6 +6,7 @@ public class ButtonLogic : MonoBehaviour
     [Header("Menus")]
     public GameObject menu_canvas;
     public GameObject options_canvas;
+    public GameObject controls_canvas;
 
     [Header("SFX")]
     public AudioClip click_sfx;
@@ -21,7 +22,12 @@ public class ButtonLogic : MonoBehaviour
         menu_canvas.SetActive(false);
         options_canvas.SetActive(true);
         PlayClickSFX();
-
+    }
+    public void ClickControlsButton()
+    {
+        options_canvas.SetActive(false);
+        controls_canvas.SetActive(true);
+        PlayClickSFX();
     }
     public void ClickExitButton()
     {
@@ -32,8 +38,14 @@ public class ButtonLogic : MonoBehaviour
     }
     public void ClickOptionsBackButton()
     {
-        menu_canvas.SetActive(true);
         options_canvas.SetActive(false);
+        menu_canvas.SetActive(true);
+        PlayClickSFX();
+    }
+    public void ClickControlsBackButton()
+    {
+        controls_canvas.SetActive(false);
+        options_canvas.SetActive(true);
         PlayClickSFX();
     }
     public void ClickResumeButton()

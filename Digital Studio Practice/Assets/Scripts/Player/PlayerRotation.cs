@@ -10,6 +10,7 @@ public class PlayerRotation : MonoBehaviour
     [Header("Menus")]
     public GameObject pause_menu;
     public GameObject options_menu;
+    public GameObject controls_menu;
 
     // Cinematics
     bool enabled_controls;
@@ -21,7 +22,7 @@ public class PlayerRotation : MonoBehaviour
 
     void Update()
     {
-        if (!pause_menu.activeSelf && !options_menu.activeSelf && enabled_controls)
+        if (!pause_menu.activeSelf && !options_menu.activeSelf && !controls_menu.activeSelf && enabled_controls)
         {
             Transform camera_tr;
             if (Camera.main)

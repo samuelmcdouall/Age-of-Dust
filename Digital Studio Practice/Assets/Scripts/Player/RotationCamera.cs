@@ -18,9 +18,10 @@ public class RotationCamera : MonoBehaviour
     [Header("Menus")]
     public GameObject pause_menu;
     public GameObject options_menu;
+    public GameObject controls_menu;
     void Update()
     {
-        if (!pause_menu.activeSelf && !options_menu.activeSelf)
+        if (!pause_menu.activeSelf && !options_menu.activeSelf && !controls_menu.activeSelf)
         {
             GetMouseInput();
             camera_target_to_rotate_around.rotation = Quaternion.Euler(mouse_y, mouse_x, 0.0f);

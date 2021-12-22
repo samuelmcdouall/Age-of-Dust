@@ -4,12 +4,18 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject pause_menu;
     public GameObject options_menu;
+    public GameObject controls_menu;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (options_menu.activeSelf)
+            if (controls_menu.activeSelf)
+            {
+                controls_menu.SetActive(false);
+                options_menu.SetActive(true);
+            }
+            else if (options_menu.activeSelf)
             {
                 options_menu.SetActive(false);
                 pause_menu.SetActive(true);
