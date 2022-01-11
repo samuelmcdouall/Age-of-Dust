@@ -4,6 +4,7 @@ public class KeySlot : MonoBehaviour
 {
     public AudioClip place_sfx;
     public GameObject key_object_placed;
+    public GameObject[] animation_triggered_objects;
     bool player_nearby;
     bool placed_object;
 
@@ -45,8 +46,16 @@ public class KeySlot : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(place_sfx, transform.position, SettingsManager.sfx_volume);
         }
+        AnimateSelectedObjects();
         key_object_placed.SetActive(true);
         InventoryManager.key_collected = false;
         placed_object = true;
+    }
+    void AnimateSelectedObjects()
+    {
+        foreach (GameObject obj in animation_triggered_objects)
+        {
+            obj.GetComponent<Animator>().SetTrigger("key_placed_in_slot");
+        }
     }
 }
