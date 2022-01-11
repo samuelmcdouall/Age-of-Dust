@@ -73,4 +73,10 @@ public class PressurePadPuzzleManager : MonoBehaviour
             pad.GetComponent<PressurePad>().ResetPad();
         }
     }
+
+    void ChangeCameraBackToPlayer()
+    {
+        CameraManager.DisableAllEnabledCameras();
+        CameraManager.EnableCamera(player_camera);
+    }
 }
