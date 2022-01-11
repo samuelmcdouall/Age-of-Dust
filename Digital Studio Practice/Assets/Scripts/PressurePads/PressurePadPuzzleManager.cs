@@ -14,10 +14,12 @@ public class PressurePadPuzzleManager : MonoBehaviour
     float cinematic_camera_time;
     public GameObject cinematic_camera;
     GameObject player_camera;
+    GameObject player;
 
     void Start()
     {
         player_camera = GameObject.FindGameObjectWithTag("MainCamera");
+        player = GameObject.FindGameObjectWithTag("Player");
         incorrect_combination = false;
         combination = new List<int>();
     }
@@ -55,7 +57,7 @@ public class PressurePadPuzzleManager : MonoBehaviour
 
     void PuzzleComplete()
     {
-        AudioSource.PlayClipAtPoint(completion_sfx, transform.position, SettingsManager.sfx_volume);
+        AudioSource.PlayClipAtPoint(completion_sfx, player.transform.position, SettingsManager.sfx_volume);
         foreach (GameObject obj in animation_triggered_objects)
         {
             obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
