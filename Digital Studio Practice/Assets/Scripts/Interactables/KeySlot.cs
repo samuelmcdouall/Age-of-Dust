@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class KeySlot : MonoBehaviour
 {
+    GameObject player;
+    public GameObject place_in_slot_UI;
+    [SerializeField]
+    float player_interaction_threshold;
     public AudioClip place_sfx;
     public GameObject key_object_placed;
     public GameObject[] animation_triggered_objects;
@@ -15,33 +19,34 @@ public class KeySlot : MonoBehaviour
     void Start()
     {
         player_camera = GameObject.FindGameObjectWithTag("MainCamera");
+        player = GameObject.FindGameObjectWithTag("Player");
         player_nearby = false;
         placed_object = false;
     }
 
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == "Player")
-        {
-            player_nearby = true;
-        }
-    }
-
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.gameObject.tag == "Player")
-        {
-            player_nearby = false;
-        }
-    }
-
     void Update()
     {
-        if (player_nearby && !placed_object && InventoryManager.key_collected && Input.GetKeyDown(KeyCode.E))
+        if (!placed_object && InventoryManager.key_collected)
         {
-            PlaceKeyInSlot();
-            //enabled = false; todo maybe look at using this later on
+            player_nearby = Vector3.Distance(player.transform.position, transform.position) <= player_interaction_threshold;
+            if (player_nearby)
+            {
+                if (!place_in_slot_UI.activeSelf)
+                {
+                    place_in_slot_UI.SetActive(true);
+                }
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    PlaceKeyInSlot();
+                }
+            }
+            else
+            {
+                if (place_in_slot_UI.activeSelf)
+                {
+                    place_in_slot_UI.SetActive(false);
+                }
+            }
         }
     }
 
