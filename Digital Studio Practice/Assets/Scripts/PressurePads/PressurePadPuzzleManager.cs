@@ -6,6 +6,7 @@ public class PressurePadPuzzleManager : MonoBehaviour
     [Header("Pressure Pads")]
     public GameObject[] pressure_pads;
     public GameObject[] animation_triggered_objects;
+    public AudioClip completion_sfx;
     [System.NonSerialized]
     public bool incorrect_combination;
     List<int> combination;
@@ -54,6 +55,7 @@ public class PressurePadPuzzleManager : MonoBehaviour
 
     void PuzzleComplete()
     {
+        AudioSource.PlayClipAtPoint(completion_sfx, transform.position, SettingsManager.sfx_volume);
         foreach (GameObject obj in animation_triggered_objects)
         {
             obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
