@@ -7,9 +7,14 @@ public class KeySlot : MonoBehaviour
     public GameObject[] animation_triggered_objects;
     bool player_nearby;
     bool placed_object;
+    [SerializeField]
+    float cinematic_camera_time;
+    public GameObject cinematic_camera;
+    GameObject player_camera;
 
     void Start()
     {
+        player_camera = GameObject.FindGameObjectWithTag("MainCamera");
         player_nearby = false;
         placed_object = false;
     }
@@ -47,6 +52,10 @@ public class KeySlot : MonoBehaviour
             AudioSource.PlayClipAtPoint(place_sfx, transform.position, SettingsManager.sfx_volume);
         }
         AnimateSelectedObjects();
+        Player.last_camera_tr = Camera.main.transform;
+        CameraManager.DisableAllEnabledCameras();
+        CameraManager.EnableCamera(cinematic_camera);
+        Invoke("ChangeCameraBackToPlayer", cinematic_camera_time);
         key_object_placed.SetActive(true);
         InventoryManager.key_collected = false;
         placed_object = true;
@@ -57,5 +66,10 @@ public class KeySlot : MonoBehaviour
         {
             obj.GetComponent<Animator>().SetTrigger("key_placed_in_slot");
         }
+    }
+    void ChangeCameraBackToPlayer()
+    {
+        CameraManager.DisableAllEnabledCameras();
+        CameraManager.EnableCamera(player_camera);
     }
 }
