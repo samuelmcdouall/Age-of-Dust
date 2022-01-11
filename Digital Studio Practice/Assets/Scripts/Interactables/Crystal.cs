@@ -17,6 +17,7 @@ public class Crystal : MonoBehaviour
     public GameObject[] animation_triggered_objects;
     GameObject player_rotation;
     public GameObject object_player_faces;
+    public GameObject timeline_object;
     [SerializeField]
     float disable_control_period;
 
@@ -96,6 +97,10 @@ public class Crystal : MonoBehaviour
         if (object_player_faces)
         {
             TurnPlayerToObject();
+        }
+        if (timeline_object)
+        {
+            timeline_object.SetActive(true);
         }
     }
 
