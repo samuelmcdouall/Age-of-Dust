@@ -9,9 +9,14 @@ public class PressurePadPuzzleManager : MonoBehaviour
     [System.NonSerialized]
     public bool incorrect_combination;
     List<int> combination;
+    [SerializeField]
+    float cinematic_camera_time;
+    public GameObject cinematic_camera;
+    GameObject player_camera;
 
     void Start()
     {
+        player_camera = GameObject.FindGameObjectWithTag("MainCamera");
         incorrect_combination = false;
         combination = new List<int>();
     }
@@ -53,6 +58,10 @@ public class PressurePadPuzzleManager : MonoBehaviour
         {
             obj.GetComponent<Animator>().SetTrigger("pressure_pad_pressed");
         }
+        Player.last_camera_tr = Camera.main.transform;
+        CameraManager.DisableAllEnabledCameras();
+        CameraManager.EnableCamera(cinematic_camera);
+        Invoke("ChangeCameraBackToPlayer", cinematic_camera_time);
     }
 
     public void ResetPuzzle()
