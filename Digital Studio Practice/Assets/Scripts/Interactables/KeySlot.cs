@@ -63,6 +63,7 @@ public class KeySlot : MonoBehaviour
         CameraManager.EnableCamera(cinematic_camera);
         Invoke("ChangeCameraBackToPlayer", cinematic_camera_time);
         key_object_placed.SetActive(true);
+        place_in_slot_UI.SetActive(false);
         InventoryManager.key_collected = false;
         placed_object = true;
     }
