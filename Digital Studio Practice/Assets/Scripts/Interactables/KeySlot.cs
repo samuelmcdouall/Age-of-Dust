@@ -20,6 +20,7 @@ public class KeySlot : MonoBehaviour
     {
         player_camera = GameObject.FindGameObjectWithTag("MainCamera");
         player = GameObject.FindGameObjectWithTag("Player");
+        place_in_slot_UI.SetActive(false);
         player_nearby = false;
         placed_object = false;
     }
