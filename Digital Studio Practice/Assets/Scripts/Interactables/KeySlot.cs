@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class KeySlot : MonoBehaviour
@@ -6,9 +7,10 @@ public class KeySlot : MonoBehaviour
     public GameObject place_in_slot_UI;
     [SerializeField]
     float player_interaction_threshold;
-    public AudioClip place_sfx;
     public GameObject key_object_placed;
     public GameObject[] animation_triggered_objects;
+    public AudioClip[] sfx_clips;
+    public float[] post_sfx_delays;
     bool player_nearby;
     bool placed_object;
     [SerializeField]
@@ -53,10 +55,7 @@ public class KeySlot : MonoBehaviour
 
     void PlaceKeyInSlot()
     {
-        if (place_sfx)
-        {
-            AudioSource.PlayClipAtPoint(place_sfx, transform.position, SettingsManager.sfx_volume);
-        }
+        StartCoroutine(PlayAllSFXClips());
         AnimateSelectedObjects();
         Player.last_camera_tr = Camera.main.transform;
         CameraManager.DisableAllEnabledCameras();
@@ -66,6 +65,14 @@ public class KeySlot : MonoBehaviour
         place_in_slot_UI.SetActive(false);
         InventoryManager.key_collected = false;
         placed_object = true;
+    }
+    IEnumerator PlayAllSFXClips()
+    {
+        for (int count = 0; count < sfx_clips.Length; count++)
+        {
+            AudioSource.PlayClipAtPoint(sfx_clips[count], transform.position, SettingsManager.sfx_volume);
+            yield return new WaitForSeconds(post_sfx_delays[count]);
+        }
     }
     void AnimateSelectedObjects()
     {
