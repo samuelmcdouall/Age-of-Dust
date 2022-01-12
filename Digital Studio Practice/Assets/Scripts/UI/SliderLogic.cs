@@ -8,8 +8,6 @@ public class SliderLogic : MonoBehaviour
     public Slider sensitivity_slider;
     void OnEnable()
     {
-        print("options enabled");
-        // todo this gets done twice, need to sort out, move to another script maybe the menu music 
         sfx_slider.value = SettingsManager.sfx_volume;
         music_slider.value = SettingsManager.music_volume;
         sensitivity_slider.value = SettingsManager.look_sensitivity;

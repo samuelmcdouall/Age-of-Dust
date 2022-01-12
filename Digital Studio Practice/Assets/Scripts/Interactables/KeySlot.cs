@@ -4,6 +4,8 @@ using UnityEngine;
 public class KeySlot : MonoBehaviour
 {
     GameObject player;
+
+    [Header("Interaction")]
     public GameObject place_in_slot_UI;
     [SerializeField]
     float player_interaction_threshold;
@@ -13,6 +15,8 @@ public class KeySlot : MonoBehaviour
     public float[] post_sfx_delays;
     bool player_nearby;
     bool placed_object;
+
+    [Header("Cinematics")]
     [SerializeField]
     float cinematic_camera_time;
     public GameObject cinematic_camera;

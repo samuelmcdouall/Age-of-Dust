@@ -18,7 +18,6 @@ public class PressurePadPuzzleManager : MonoBehaviour
 
     void Start()
     {
-        player_camera = GameObject.FindGameObjectWithTag("MainCamera");
         player = GameObject.FindGameObjectWithTag("Player");
         incorrect_combination = false;
         combination = new List<int>();
@@ -81,6 +80,7 @@ public class PressurePadPuzzleManager : MonoBehaviour
     void ChangeCameraBackToPlayer()
     {
         CameraManager.DisableAllEnabledCameras();
+        player_camera = GameObject.FindGameObjectWithTag("MainCamera");
         CameraManager.EnableCamera(player_camera);
     }
 }

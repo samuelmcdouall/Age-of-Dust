@@ -24,7 +24,7 @@ public class PressurePad : MonoBehaviour
         {
             if (fx)
             {
-                fx.SetActive(true); // todo this will only play once, need to reset this (will need to instantiate this if want it playing multiple times, but i dont think it should)
+                fx.SetActive(true);
             }
 
             DepressPad();

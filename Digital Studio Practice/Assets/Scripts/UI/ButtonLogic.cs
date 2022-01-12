@@ -31,8 +31,6 @@ public class ButtonLogic : MonoBehaviour
     }
     public void ClickExitButton()
     {
-        // todo remove this after testing
-        print("QUIT GAME (remove this after testing)");
         PlayClickSFX();
         Application.Quit();
     }
@@ -66,7 +64,7 @@ public class ButtonLogic : MonoBehaviour
     {
         if (Time.timeScale == 0.0f)
         {
-            // todo work around comment because unity is annoying
+            // Work around to allow Unity to play a sound effect whilst timescale is set to 0
             Time.timeScale = 1.0f;
             AudioSource.PlayClipAtPoint(click_sfx, audio_listener.transform.position, SettingsManager.sfx_volume);
             Time.timeScale = 0.0f;

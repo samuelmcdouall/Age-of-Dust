@@ -19,5 +19,4 @@ public class GroundCheck : MonoBehaviour
     {
         is_grounded = false;
     }
-
 }

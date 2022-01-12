@@ -50,7 +50,6 @@ public class Player : MonoBehaviour
     float player_top_fast_move_speed;
     [SerializeField]
     private bool show_cursor;
-    int count = 0;
 
     void Start()
     {
@@ -68,7 +67,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        HandleJumpMechanics();    
+        HandleJumpMechanics();
     }
 
     void InitialPlayerSetup()
@@ -155,7 +154,7 @@ public class Player : MonoBehaviour
         }
         else if (!able_to_jump_off_ground)
         {
-            jump_delay_timer += Time.deltaTime;
+            jump_delay_timer += Time.fixedDeltaTime;
         }
     }
 
@@ -278,10 +277,6 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            print(count);
-            count++;
-            print("is grounded: " + GroundCheck.is_grounded);
-            print("is able to jump off ground: " + able_to_jump_off_ground);
             if (GroundCheck.is_grounded && able_to_jump_off_ground)
             {
                 player_ani.SetBool(jump_up_animation, true);

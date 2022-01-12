@@ -15,14 +15,12 @@ public class MovingPlatform : MonoBehaviour
 
     float stop_timer;
     Vector3 start_to_end_direction;
-    bool stopped;
     bool moving_to_end_point;
     float platform_destination_threshold;
     MovingPlatformStatus moving_platform_status;
     void Start()
     {
         stop_timer = 0.0f;
-        stopped = false;
         moving_to_end_point = true;
         start_to_end_direction = (end_point.transform.position - start_point.transform.position).normalized;
         platform_destination_threshold = 0.1f;
