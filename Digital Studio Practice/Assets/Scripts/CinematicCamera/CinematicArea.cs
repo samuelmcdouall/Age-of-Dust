@@ -13,7 +13,6 @@ public class CinematicArea : MonoBehaviour
 
     void Start()
     {
-        player_camera = GameObject.FindGameObjectWithTag("MainCamera");
         sound_manager_script = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         played_entrance_audioclip = false;
     }
@@ -31,6 +30,7 @@ public class CinematicArea : MonoBehaviour
     {
         if (player_to_regular <= player_to_cinematic)
         {
+            player_camera = GameObject.FindGameObjectWithTag("MainCamera");
             ChangeCameraTo(player_camera);
 
             if (sound_manager_script.player_as.clip.name != sound_manager_script.main_game_music.name)

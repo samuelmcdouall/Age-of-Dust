@@ -12,13 +12,13 @@ public class CinematicEvent : MonoBehaviour
 
     void Start()
     {
-        player_camera = GameObject.FindGameObjectWithTag("MainCamera");
         triggered_cinematic_event = false;
     }
 
     void ChangeCameraBackToPlayer()
     {
         CameraManager.DisableAllEnabledCameras();
+        player_camera = GameObject.FindGameObjectWithTag("MainCamera");
         CameraManager.EnableCamera(player_camera);
     }
 
