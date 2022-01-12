@@ -4211,7 +4211,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4594165137537970056, guid: 6886eb8be222bc74e97012267ecfb75c, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7706885012134524170, guid: 6886eb8be222bc74e97012267ecfb75c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6886eb8be222bc74e97012267ecfb75c, type: 3}
 --- !u!1 &178732772
 GameObject:
@@ -18680,6 +18685,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011556832164, guid: f159a1b75fe800545869a115d68acdcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4793088272770871058, guid: f159a1b75fe800545869a115d68acdcd, type: 3}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -44696,6 +44705,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6091463243912989716, guid: 2d30eb97c479d1541be03182e7e4e990, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d30eb97c479d1541be03182e7e4e990, type: 3}
 --- !u!1001 &1698138799
@@ -45322,7 +45335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
       propertyPath: player_fall_force
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
       propertyPath: player_move_force
