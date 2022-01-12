@@ -5,17 +5,8 @@ public class CinematicArea : MonoBehaviour
     public GameObject cinematic_camera;
     public GameObject cinematic_area_point;
     public GameObject regular_area_point;
-    public AudioClip entrance_audioclip;
-    public AudioClip area_audioclip;
-    bool played_entrance_audioclip;
     GameObject player_camera;
-    SoundManager sound_manager_script;
 
-    void Start()
-    {
-        sound_manager_script = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-        played_entrance_audioclip = false;
-    }
     void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.tag == "Player")
@@ -32,30 +23,11 @@ public class CinematicArea : MonoBehaviour
         {
             player_camera = GameObject.FindGameObjectWithTag("MainCamera");
             ChangeCameraTo(player_camera);
-
-            if (sound_manager_script.player_as.clip.name != sound_manager_script.main_game_music.name)
-            {
-                sound_manager_script.PlayMainMusic();
-            }
         }
         else
         {
             Player.last_camera_tr = Camera.main.transform;
             ChangeCameraTo(cinematic_camera);
-
-            if (!played_entrance_audioclip)
-            {
-                sound_manager_script.PlayAreaClip(entrance_audioclip);
-                played_entrance_audioclip = true;
-                Invoke("PlayAreaClipAfterEntrance", entrance_audioclip.length + 1.0f);
-            }
-            else
-            {
-                if (sound_manager_script.player_as.clip.name != area_audioclip.name)
-                {
-                    sound_manager_script.PlayAreaClip(area_audioclip);
-                }
-            }
         }
     }
 
@@ -63,13 +35,5 @@ public class CinematicArea : MonoBehaviour
     {
         CameraManager.DisableAllEnabledCameras();
         CameraManager.EnableCamera(camera);
-    }
-
-    void PlayAreaClipAfterEntrance()
-    {
-        if (sound_manager_script.player_as.clip.name != sound_manager_script.main_game_music.name)
-        {
-            sound_manager_script.PlayAreaClip(area_audioclip);
-        }
     }
 }
