@@ -5188,7 +5188,7 @@ MonoBehaviour:
   fx: {fileID: 0}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 1956067347}
-  disable_control_period: 11.5
+  disable_control_period: 19
   kneel_period: 12
   display_ui_script: {fileID: 1228591557}
 --- !u!1 &218326823
@@ -9658,7 +9658,7 @@ MonoBehaviour:
   fx: {fileID: 0}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 1508492374}
-  disable_control_period: 11.5
+  disable_control_period: 17
   kneel_period: 10
   display_ui_script: {fileID: 891175946}
 --- !u!1 &488890179
@@ -10126,7 +10126,7 @@ MonoBehaviour:
   fx: {fileID: 0}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 196778057}
-  disable_control_period: 11.5
+  disable_control_period: 14
   kneel_period: 7
   display_ui_script: {fileID: 716100035}
 --- !u!1 &500694507
@@ -16184,7 +16184,7 @@ MonoBehaviour:
   fx: {fileID: 0}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 1021420024}
-  disable_control_period: 11.5
+  disable_control_period: 20
   kneel_period: 13
   display_ui_script: {fileID: 1216787610}
 --- !u!1 &591924572
@@ -22788,7 +22788,7 @@ MonoBehaviour:
   fx: {fileID: 0}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 7469141179372031087}
-  disable_control_period: 11.5
+  disable_control_period: 15
   kneel_period: 8
   display_ui_script: {fileID: 659665951}
 --- !u!1 &933660839
@@ -22902,7 +22902,7 @@ MonoBehaviour:
   fx: {fileID: 0}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 662980890}
-  disable_control_period: 11.5
+  disable_control_period: 20
   kneel_period: 13
   display_ui_script: {fileID: 366536592}
 --- !u!1 &934781045
@@ -34177,7 +34177,7 @@ MonoBehaviour:
   fx: {fileID: 0}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 1523985442}
-  disable_control_period: 11.5
+  disable_control_period: 15
   kneel_period: 8
   display_ui_script: {fileID: 861418022}
 --- !u!1001 &1364256892
@@ -35024,7 +35024,7 @@ MonoBehaviour:
   fx: {fileID: 2004970078}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 2135222120}
-  disable_control_period: 11.5
+  disable_control_period: 17
   kneel_period: 10
   display_ui_script: {fileID: 1075554439}
 --- !u!65 &1411419153
@@ -35699,7 +35699,7 @@ MonoBehaviour:
   fx: {fileID: 0}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 1752167393}
-  disable_control_period: 11.5
+  disable_control_period: 15
   kneel_period: 8
   display_ui_script: {fileID: 1841796424}
 --- !u!4 &1447580992
@@ -45351,7 +45351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
       propertyPath: player_top_fast_move_speed
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
       propertyPath: initial_disable_control_period
@@ -47204,7 +47204,7 @@ MonoBehaviour:
   fx: {fileID: 0}
   sfx: {fileID: 8300000, guid: 2e14575f51b383e40a29998e0e39fc9b, type: 3}
   object_player_faces: {fileID: 1671563985}
-  disable_control_period: 11.5
+  disable_control_period: 19
   kneel_period: 12
   display_ui_script: {fileID: 488890181}
 --- !u!1001 &1854877080
