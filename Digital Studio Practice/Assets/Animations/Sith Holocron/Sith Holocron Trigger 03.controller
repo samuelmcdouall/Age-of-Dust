@@ -7,7 +7,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: key_placed_in_slot
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 623875946414400194}
   m_Solo: 0
@@ -63,7 +66,7 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3519392561837912196}
-    m_Position: {x: 310, y: 140, z: 0}
+    m_Position: {x: 310, y: 110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -83,7 +86,7 @@ AnimatorController:
   m_Name: Sith Holocron Trigger 03
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: pressure_pad_pressed
+  - m_Name: key_placed_in_slot
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
