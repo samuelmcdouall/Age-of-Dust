@@ -16,6 +16,8 @@ TagManager:
   - SoundManager
   - InteractUI
   - PlayerRotation
+  - FxTemporaire
+  - End Camera
   layers:
   - Default
   - TransparentFX
