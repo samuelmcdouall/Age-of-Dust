@@ -41853,7 +41853,15 @@ PrefabInstance:
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
+      propertyPath: player_can_fast_move
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
       propertyPath: player_top_sprint_speed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
+      propertyPath: player_top_fast_move_speed
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8623727148224305511, guid: a0aa709ea9e728d458f90110051aff1f, type: 3}
