@@ -11,7 +11,8 @@ public class DisplayUI : MonoBehaviour
     public float fade_in_time;
     public float display_time;
     public float fade_out_time;
-    public bool display_immediately;
+    public bool display_on_start;
+    public float display_on_start_delay;
     void Start()
     {
         ui_image = GetComponent<Image>();
@@ -21,9 +22,9 @@ public class DisplayUI : MonoBehaviour
             ui_text.color = new Color(ui_text.color.r, ui_text.color.g, ui_text.color.b, 0.0f);
         }
 
-        if (display_immediately)
+        if (display_on_start)
         {
-            DisplayAnimatedUI();
+            Invoke("DisplayAnimatedUI", display_on_start_delay);
         }
     }
 
