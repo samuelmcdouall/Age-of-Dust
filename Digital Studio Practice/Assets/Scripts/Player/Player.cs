@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
 
     // Cinematics
     bool enabled_controls;
+    [SerializeField]
+    float initial_disable_control_period;
 
     public GameObject pause_menu;
     public GameObject options_menu;
@@ -63,7 +65,7 @@ public class Player : MonoBehaviour
         jumped_twice = false;
         able_to_jump_off_ground = true;
         jump_delay_timer = 0.0f;
-        enabled_controls = true;
+        DisableControlsForSeconds(initial_disable_control_period);
     }
 
     public void DisableControlsForSeconds(float delay)
