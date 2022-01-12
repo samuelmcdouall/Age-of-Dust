@@ -3,11 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class GameEnd : MonoBehaviour
 {
-    void OnTriggerEnter(Collider collider)
+    [SerializeField]
+    float delay_after_object_activation;
+    void Start()
     {
-        if (collider.gameObject.CompareTag("Player"))
-        {
-            SceneManager.LoadScene("Menu Scene");
-        }  
+        Invoke("LoadMainMenu", delay_after_object_activation);
     }
+
+    void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Menu Scene");
+    }
+
 }
