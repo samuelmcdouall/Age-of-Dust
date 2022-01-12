@@ -12,12 +12,14 @@ public class PlayerRotation : MonoBehaviour
     public GameObject options_menu;
     public GameObject controls_menu;
 
-    // Cinematics
+    [Header("Cinematics")]
     bool enabled_controls;
+    [SerializeField]
+    float initial_disable_control_period;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        enabled_controls = true;
+        DisableRotationForSeconds(initial_disable_control_period);
     }
 
     void Update()
