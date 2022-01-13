@@ -1797,7 +1797,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: Rhoen must investigate and find a way to stop the spread of corruption
+  m_Text: Rhoan must investigate and find a way to stop the spread of corruption
     before it is too late.
 --- !u!222 &94654029
 CanvasRenderer:
@@ -4074,7 +4074,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: Rhoen has stabilized the source of corruption, but his work is far from
+  m_Text: Rhoan has stabilized the source of corruption, but his work is far from
     done.
 --- !u!222 &173560811
 CanvasRenderer:
@@ -9092,7 +9092,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: Rhoen, a young scholar, dares to walk on the surface.
+  m_Text: Rhoan, a young scholar, dares to walk on the surface.
 --- !u!222 &440934646
 CanvasRenderer:
   m_ObjectHideFlags: 0
