@@ -1897,8 +1897,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: "Regardless of the high advanced technology at their disposal, people of
-    Caleo Dur\u2019am have serious issues like food and water shortages, the lack
+  m_Text: "Regardless of the highly advanced technology at their disposal, the people
+    of Caleo Dur\u2019am have serious issues like food and water shortages, the lack
     of living space and security, and surface inaccessibility."
 --- !u!222 &96060449
 CanvasRenderer:
@@ -3450,8 +3450,8 @@ MonoBehaviour:
     The corruption is slowly
     spreading from one object to the next.
 
-    Usually dry air is now dense and
-    it''s hard to breathe.
+    Usually dry air is dense now, and
+    it is hard to breathe.
 
     The source of corruption seems to be an unidentified
     crystal with the same material.
@@ -4869,14 +4869,14 @@ MonoBehaviour:
     Day 52 of 2148th Emergence:
 
 
-    Looks
-    like one of the last Iowi trees, once great marvels of the Forgotten Plains.
+    It
+    looks like one of the last Iowi trees, once great marvels of the Forgotten Plains.
 
     The
-    trunk is extremely brittle and the crown is leafless.
+    trunk is brittle, and the crown is leafless.
 
-    The energy of the
-    runic rocks around the tree is gone.
+    The energy of the runic rocks
+    around the tree is gone.
 
     Low chance of survivability.'
 --- !u!222 &209340744
@@ -5702,16 +5702,13 @@ MonoBehaviour:
     unidentified crystal is corrupting the area around it.
 
     This one seems more
-    poweful than the previous two.
+    powerful than the previous two.
 
     The crystals seem to be connected somehow.
 
     The
-    stabilization of this crystal may lead to securing a wider area, causing smaller
-    nearby crystals to stabilize as well.
-
-
-'
+    stabilization of this crystal may lead to securing a wider area, causing nearby
+    crystals to stabilize as well.'
 --- !u!222 &234495447
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5835,14 +5832,14 @@ MonoBehaviour:
     Day 52 of 2148th Emergence:
 
 
-    Looks
-    like the ruins of the Floating Tower.
+    It
+    looks like the ruins of the Floating Tower.
 
-    The garden that used to surround the
-    tower is completely exterminated.
+    The weather exterminated the
+    garden that used to surround the tower.
 
-    The main cannons are gone, most likely
-    scavenged.
+    The main cannons are gone, most
+    likely scavenged.
 
     There are no signs of any ammunition either.'
 --- !u!222 &245029394
@@ -6861,8 +6858,8 @@ MonoBehaviour:
     Day 52 of 2148th Emergence:
 
 
-    Looks
-    like an F-41 aircraft that once belonged to the planet''s Great Fleet.
+    It
+    looks like an F-41 aircraft that once belonged to the planet''s Great Fleet.
 
     The
     cause of the crash is unknown.
@@ -16269,8 +16266,8 @@ MonoBehaviour:
     The majority of pieces are missing or
     damaged beyond repair.
 
-    Based on the remaining sculpture, Nyla, the goddess
-    of wildlife was worshipped here.'
+    Based on the remaining sculpture, this temple worshipped
+    Nyla, the goddess of wildlife.'
 --- !u!222 &591924575
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21477,8 +21474,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: He decided to study the magical orbs which contain arcane knowledge that
-    can potentially help him in his search for the planet's salvation.
+  m_Text: He decided to study magical orbs and the arcane knowledge hidden within
+    them, hoping to find a solution for the planet's salvation.
 --- !u!222 &858465924
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25344,7 +25341,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Northest of the Gates of the Grand Hall,
+  m_Text: 'Northeast of the Gates of the Grand Hall,
 
     Day 52 of 2148th Emergence:
 
@@ -25357,7 +25354,7 @@ MonoBehaviour:
     indicating they come from beneath the planet.
 
     Based on their perfect-cut
-    shape, it is possible they are being mined. '
+    shape, someone could be mining them. '
 --- !u!222 &1070383254
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31668,18 +31665,19 @@ MonoBehaviour:
 
 
     The
-    crystal radiates strong energy.
+    crystal radiates powerful energy.
 
     Its origin is unknown.
 
-    The recent explosion
-    is an indicator of its volatile features.
+    The recent
+    explosion is an indicator of its volatile features.
 
-    It needs a substance which prevents
-    the breakdown of its magical properties.
+    It needs a substance
+    that prevents the breakdown of its magical properties.
 
-    The application of the Sarlite''s
-    (orb #32) mythical runes with inherent stabilizing potential is required.
+    The application of
+    the Sarlite''s (orb #32) mythical runes with inherent stabilizing potential is
+    required.
 
 '
 --- !u!222 &1189091454
@@ -44622,16 +44620,15 @@ MonoBehaviour:
     Day 52 of 2148th Emergence:
 
 
-    Looks
-    like the ruins of the Statue of Baelia, the governess of the Lost City of Toisea.
+    It
+    looks like the ruins of the Statue of Baelia, the governess of the Lost City
+    of Toisea.
 
-    The
-    figure of Baelia, a symbol of benevolence, is completely devoured by the sand.
+    The sand completely devoured the figure of Baelia, a symbol of
+    benevolence and warm welcome.
 
-    The
-    old blueprints are the last witnesses of its existance.
-
-'
+    The old blueprints are the last witnesses
+    of its existence.'
 --- !u!222 &1680491582
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -44951,7 +44948,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: His planet is burning and the clock is ticking.
+  m_Text: His planet is burning, and the clock is ticking.
 --- !u!222 &1702956064
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -45045,14 +45042,14 @@ MonoBehaviour:
     Day 52 of 2148th Emergence:
 
 
-    Looks
-    like the ruins of the Grand Hall''s guardian.
+    It
+    looks like the ruins of the Grand Hall''s guardian.
 
-    The soil is completely dehydrated.
+    The soil is completely
+    dehydrated.
 
-    The
-    size and shape of the rocks indicate this sculpture most likely resembled Atar,
-    the god of the land.'
+    The size and shape of the rocks indicate this sculpture most
+    likely resembled Atar, the god of the land.'
 --- !u!222 &1711249605
 CanvasRenderer:
   m_ObjectHideFlags: 0
