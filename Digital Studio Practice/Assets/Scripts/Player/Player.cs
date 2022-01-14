@@ -81,6 +81,7 @@ public class Player : MonoBehaviour
         stand_up_animation = "stand_up";
         camera_tr = Camera.main.transform;
         Cursor.visible = show_cursor;
+        print("player setup, cursor should be false");
         able_to_jump_off_ground = true;
         jump_delay_timer = 0.0f;
         DisableControlsForSeconds(initial_disable_control_period);
@@ -94,6 +95,7 @@ public class Player : MonoBehaviour
     void EnableControls()
     {
         enabled_controls = true;
+        Cursor.visible = false;
     }
 
     void LimitSpeedToMaximum()
