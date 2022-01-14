@@ -72,6 +72,16 @@ public class DisplayUI : MonoBehaviour
             fade_out_timer += Time.deltaTime;
             yield return null;
         }
+        SetToFullyTransparent();
         yield return null;
+    }
+
+    void SetToFullyTransparent()
+    {
+        ui_image.color = new Color(ui_image.color.r, ui_image.color.g, ui_image.color.b, 0.0f);
+        if (ui_text)
+        {
+            ui_text.color = new Color(ui_text.color.r, ui_text.color.g, ui_text.color.b, 0.0f);
+        }
     }
 }
